@@ -1,25 +1,39 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+import { faker } from '@faker-js/faker'
+import CreateSiteStepOne from "../pages/CreateSitePage";
+import SignInPage from "../pages/SignInPage";
+import Navigation from "../pages/Navigation";
+
+Cypress.Commands.add('authenticate', () => {
+  // Go to the administration interface
+  cy.visit('/ghost/')
+
+  // If we aren't already logged in we will be redirected to
+  //   - the sign in page, if a site already has been created
+  //   - the site creation wizard, if a site hasn't yet been created
+  cy.hash().should('be.oneOf', [SignInPage.hash, CreateSiteStepOne.hash])
+  cy.hash().then((hash) => {
+    if(hash === CreateSiteStepOne.hash) {
+      const createSite = new CreateSiteStepOne();
+
+      createSite
+        .nextStep()
+        .fillBlogTitle(faker.company.name())
+        .fillName(faker.name.fullName())
+        .fillEmail(Cypress.env('username'))
+        .fillPassword(Cypress.env('password'))
+        .nextStep()
+        .skip()
+    } else if(hash === SignInPage.hash) {
+      const signIn = new SignInPage();
+
+      signIn
+        .fillUsername(Cypress.env('username'))
+        .fillPassword(Cypress.env('password'))
+        .submit()
+    }
+  })
+
+  // Make sure that we have successfully logged in
+  const nav = new Navigation()
+  nav.getUsername().should('have.text', Cypress.env('username'))
+})

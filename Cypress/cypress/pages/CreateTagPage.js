@@ -5,6 +5,18 @@ class CreateTagPage {
     return this;
   }
 
+  fillColor(value) {
+    cy.get('input[name="accent-color"]').type(value);
+
+    return this;
+  }
+
+  fillDescription(value) {
+    cy.get('textarea[name="description"]').type(value);
+
+    return this;
+  }
+
   save() {
     let button = cy.contains('button', 'Save');
     button.click();
@@ -17,12 +29,12 @@ class CreateTagPage {
   }
 
   getErrorMessage() {
-    return cy.get('span.error');
+    return cy.get('.error p.response');
   }
 
   getSlug() {
     return cy.get('input[name="slug"]');
   }
 }
-  
+
 export default CreateTagPage;

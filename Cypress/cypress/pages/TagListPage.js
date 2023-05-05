@@ -7,6 +7,10 @@ class TagListPage {
     return new CreateTagPage()
   }
 
+  getNumberOfTags() {
+    return cy.get('li.gh-tags-list-item').its('length');
+  }
+
   getSlugs() {
     return cy.get('.gh-tag-list-slug span');
   }

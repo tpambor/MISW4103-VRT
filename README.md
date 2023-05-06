@@ -32,3 +32,12 @@ Equipo #3
 9. Seleccionar `E2E Testing`
 10. Seleccionar `Chrome`/`Chromium` y haz clic en `Start E2E Testing in Chromium`
 11. Seleccionar el archivo `create-tag.cy.js` para su ejecución
+
+## Instrucciones para ejecutar pruebas Kraken
+1. Ejecutar Ghost 3.41.1 con Docker `docker run --rm -t -p 2368:2368 ghost:3.41.1` (recomendado) o de forma local siguiendo las instrucciones del [tutorial](https://thesoftwaredesignlab.github.io/AutTestingCodelabs/ghost-local-deployment/index.html)
+2. Crear, en Ghost, un usuario (puede ser el usuario administrador) y tener un sitio (puede ser el que se crea por defecto).
+2. Clonar este repositorio
+3. Ir a la carpeta Kraken
+4. En caso de no tener instalado Kraken, instalarlo con `npm install kraken-node`
+5. Abrir el archivo `properties.json` y actualizar los enlaces, el email y el password correspondientes a la instalación que tiene de Ghost
+6. Ejecutar Kraken con el comando: `node "./node_modules/kraken-node/bin/kraken-node" run`

@@ -25,8 +25,8 @@ Equipo #3
 6. Si aun **no** ha creado un sitio en Ghost
     * se puede crear de forma automatizado, ir a punto 8
     * se puede crear de forma manual en http://127.0.0.1:2368/ghost/#/setup/one, ir a punto 7
-7. Si ya ha crado un sitio en Ghost, se puede configurar `username` y `password` en `cypress.config.js` con los datos del usuario para ejecutar las pruebas
-8. Iniciar Cypress
+7. Si ya ha creado un sitio en Ghost, se puede configurar `username` y `password` en `cypress.config.js` con los datos del usuario para ejecutar las pruebas
+8. Iniciar Cypress (ubicado en la carpeta cypress):
     * Para Linux, ejecuta `./node_modules/.bin/cypress open` para iniciar Cypress
     * Para Windows, ejecuta `node_modules\.bin\cypress open` para iniciar Cypress
 9. Seleccionar `E2E Testing`

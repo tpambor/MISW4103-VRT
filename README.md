@@ -31,3 +31,4 @@ Equipo #3
     * Para Windows, ejecuta `node_modules\.bin\cypress open` para iniciar Cypress
 9. Seleccionar `E2E Testing`
 10. Seleccionar `Chrome`/`Chromium` y haz clic en `Start E2E Testing in Chromium`
+11. Seleccionar el archivo `create-tag.cy.js` para su ejecución

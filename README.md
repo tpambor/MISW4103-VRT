@@ -21,7 +21,7 @@ Equipo #3
 2. Ir a la carpeta Cypress
 3. Instalar las dependencias con `npm install`
 4. Ejecutar Ghost 3.41.1 con Docker `docker run --rm -t -p 2368:2368 ghost:3.41.1` (recomendado) o de forma local siguiendo las instrucciones del [tutorial](https://thesoftwaredesignlab.github.io/AutTestingCodelabs/ghost-local-deployment/index.html)
-5. Si Ghost está ubicado en una dirección differente a http://localhost:2368, hay que adapter el `baseUrl` en `cypress.config.js`
+5. Si Ghost está ubicado en una dirección differente a http://localhost:2368, hay que cambiar el `baseUrl` en `cypress.config.js`
 6. Si aun **no** ha creado un sitio en Ghost
     * se puede crear de forma automatizado, ir a punto 8
     * se puede crear de forma manual en http://127.0.0.1:2368/ghost/#/setup/one, ir a punto 7

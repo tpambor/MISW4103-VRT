@@ -2,14 +2,10 @@ const { Given, When, Then } = require('@cucumber/cucumber');
 
 const createPostPage = require("../pages/CreatePostPage");
 const postsListPage = require("../pages/PostsListPage");
+const loginPage = require("../pages/LoginPage");
 
 Given('I sign in with {kraken-string} and {kraken-string}', async function (email, password) {
-    let fldEmail = await this.driver.$('#ember8');
-    await fldEmail.setValue(email);
-	let fldPwd = await this.driver.$('#ember10');
-    await fldPwd.setValue(password);
-	let btnSignIn = await this.driver.$('#ember12');
-    return await btnSignIn.click();
+    return await loginPage.login(this.driver, email, password);
 });
 
 When('I create new Post', async function () {
@@ -33,6 +29,6 @@ When('I click on posts link', async function () {
 });
 
 Then('I see the post {kraken-string} in the list', async function(postTitle) {
-    let postListed = await this.driver.$('*='.concat(postTitle));
+    let postListed = await postsListPage.getPost(this.driver, postTitle);
     return postListed.click();
 });

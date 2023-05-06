@@ -40,4 +40,7 @@ Equipo #3
 3. Ir a la carpeta Kraken
 4. En caso de no tener instalado Kraken, instalarlo con `npm install kraken-node`
 5. Abrir el archivo `properties.json` y actualizar los enlaces, el email y el password correspondientes a la instalación que tiene de Ghost
-6. Ejecutar Kraken con el comando: `node "./node_modules/kraken-node/bin/kraken-node" run`
+6. Ejecutar Kraken:
+    * si se tiene instalado globalmente se ejecuta: `kraken-node run`  (o `node kraken-node run`)
+    * si se instaló solo en la carpeta se ejecuta: `./node_modules/kraken-node/bin/kraken-node run`
+   

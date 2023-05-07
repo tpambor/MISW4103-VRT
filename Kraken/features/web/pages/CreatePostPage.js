@@ -3,11 +3,39 @@ async function getTitleArea(driver) {
 }
 
 async function getPostArea(driver) {
-	return await driver.$('.gh-koenig-editor-pane.flex.flex-column.mih-100');
+	return await driver.$('.koenig-editor__editor.__mobiledoc-editor.__has-no-content');
 }
 
 async function getPostsLink(driver) {
 	return await driver.$('*=Posts');
 }
 
-module.exports = {getTitleArea, getPostArea, getPostsLink};
+async function getPublishLink(driver){
+	return await driver.$('.ember-view.ember-basic-dropdown-trigger.gh-btn.gh-btn-outline.gh-publishmenu-trigger');
+}
+
+async function getPublishBtn(driver){
+	return await driver.$('.gh-btn.gh-btn-blue.gh-publishmenu-button.gh-btn-icon.ember-view');
+}
+
+async function getSettingsBtn(driver){
+	return await driver.$('.post-settings');
+}
+
+async function getSettingsCloseBtn(driver){
+	return await driver.$('button[aria-label="Close"]');
+}
+
+async function getUrlArea(driver){
+	return await driver.$('input[name="post-setting-slug"]');
+}
+
+async function selectTag(driver, tag){
+	let tagField = await driver.$('#tag-input');
+	await tagField.click();
+	let tagSelector = await driver.$('li*='.concat(tag));
+	return await tagSelector.click();
+}
+
+module.exports = {getTitleArea, getPostArea, getPostsLink, getPublishLink, 
+	getPublishBtn, getSettingsBtn, getUrlArea, getSettingsCloseBtn, selectTag};

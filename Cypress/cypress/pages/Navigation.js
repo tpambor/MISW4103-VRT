@@ -1,6 +1,7 @@
 import TagListPage from "./TagListPage";
 import PageListPage from "./PageListPage";
-import EditarPerfil from "./EditarPerfilPage";
+import StaffListPage from "./StaffListPage";
+
 class Navigation {
   getUsername() {
     return cy.get('nav span.gh-user-email')
@@ -18,9 +19,10 @@ class Navigation {
     return new PageListPage();
   }
 
-  goToPerfil() {
-    //cy.get('nav li a').contains('staff/').click()
-    return new EditarPerfil();
+  goToStaff() {
+    cy.get('nav li a').contains('Staff').click()
+
+    return new StaffListPage();
   }
 }
   

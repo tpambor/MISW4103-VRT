@@ -226,6 +226,17 @@ When('I fill in the color with a word', async function () {
   return await createTagPage.fillInColor(this.driver, color);
 });
 
+When('I fill in the short description', async function () {
+  tagName = faker.lorem.words(10);
+  return await createTagPage.fillInShortDescription(this.driver,tagName);
+});
+
+When('I fill in the long description', async function () {
+  tagName = faker.lorem.words(100);
+  return await createTagPage.fillInShortDescription(this.driver,tagName);
+});
+
+
 When('I save', async function () {
     return await createTagPage.save(this.driver);
 });
@@ -252,4 +263,9 @@ Then('I confirm leave page', async function() {
 Then('I see the same number of tags as before', async function () {
   let actualTags = await tagsListPage.getNumberOfTags(this.driver);
   expect(actualTags).to.equal(tagsNumber);
+});
+
+Then('I see a long error message', async function() {
+  let message = await createTagPage.getDescriptionErrorMessage(this.driver);
+  expect(message).to.equal("Description cannot be longer than 500 characters.");
 });

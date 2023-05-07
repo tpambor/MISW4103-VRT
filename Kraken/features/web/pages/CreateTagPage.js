@@ -9,6 +9,11 @@ async function fillInColor(driver, color){
 	return await nameField.setValue(color);
 }
 
+async function fillInShortDescription(driver, name){
+    let nameField = await driver.$('#tag-description');
+	return await nameField.setValue(name);
+}
+
 async function save(driver){
     let button = await driver.$('button=Save');
     button.click();
@@ -29,10 +34,15 @@ async function getColorErrorMessage(driver) {
     return await message.getProperty("innerText");
 }
 
+async function getDescriptionErrorMessage(driver) {
+    let message = await driver.$('/html/body/div[2]/div/main/section/form/div/div[1]/div[1]/div[3]/p[1]');
+    return await message.getProperty("innerText");
+}
+
 async function leave(driver){
     let buttonLeave = await driver.$('button=Leave');
     return buttonLeave.click();
 }
 
-module.exports = {fillInName, fillInColor, save, getSlug, getErrorMessage, 
+module.exports = {fillInName, fillInColor, fillInShortDescription,getDescriptionErrorMessage, save, getSlug, getErrorMessage, 
     getColorErrorMessage, leave};

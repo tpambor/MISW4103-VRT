@@ -46,7 +46,7 @@ Equipo #3
    
 ##Listado de escenarios: 
  
-[Escenarios de prueba cypress](Escenarios-de-prueba)
+[Escenarios de prueba cypress](Escenarios-de-prueba-Cypress)
 [Escenarios de prueba kraken](Escenarios-de-prueba-Kraken)   
 ##Ventajas y desventajas 
 

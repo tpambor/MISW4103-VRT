@@ -26,7 +26,7 @@ Equipo #3
     * Para Windows, ejecuta `node_modules\.bin\cypress open` para iniciar Cypress
 9. Seleccionar `E2E Testing`
 10. Seleccionar `Chrome`/`Chromium` y haz clic en `Start E2E Testing in Chromium`
-11. Seleccionar el archivo que se desea ejecutar.
+11. Seleccionar el archivo que se desea ejecutar (create-post, create-tag o editar-perfil).
 
 ## Instrucciones para ejecutar pruebas Kraken
 1. Ejecutar Ghost 3.41.1 con Docker `docker run --rm -t -p 2368:2368 ghost:3.41.1` (recomendado) o de forma local siguiendo las instrucciones del [tutorial](https://thesoftwaredesignlab.github.io/AutTestingCodelabs/ghost-local-deployment/index.html)

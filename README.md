@@ -14,7 +14,7 @@ Equipo #3
 4. Editar una Página: Permite modificar la información de una página existente, como el título, el texto, los tags, entre otros.
 5. Crear tag: Permite crear una nueva etiqueta para clasificar los post o páginas. Las etiquetas, además de su nombre y su alias (“slug”), pueden tener una descripción y una imagen asociada.
 6. Editar perfil: Permite modificar la información de un perfil existente, como la foto, correo, entre otros.
-7. Configurar sitio web: Permite definir el tema principal del sitio, al igual que los enlaces que aparecerán en la página inicial.
+7. Login.
 
 ## Instrucciones para ejecutar pruebas Cypress
 1. Clonar este repositorio

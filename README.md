@@ -36,7 +36,7 @@ Equipo #3
 4. Instalar Kraken con el comando `npm install kraken-node`. Se puede ver más información sobre el uso de Kraken en este [tutorial](https://thesoftwaredesignlab.github.io/AutTestingCodelabs/kraken-web-testing-tool/index.html)
 5. Abrir el archivo `properties.json` y actualizar los enlaces, el email y el password correspondientes a la instalación que tiene de Ghost
 6. En la carpeta features: **Renombrar el archivo que se desee ejecutar** para que tenga la extensión "feature" (solo un archivo con esta extensión cada vez).
-6. Ejecutar las pruebas, estando en la caperta Kraken, con el comando: `node_modules\.bin\kraken-node run` o, en algunas ocasiones para Windows: `node "./node_modules/.bin/kraken-node" run`
+6. Ejecutar las pruebas, estando en la caperta Kraken, con el comando: `node "./node_modules/kraken-node/bin/kraken-node" run`
    
    
 ## Listado de escenarios: 

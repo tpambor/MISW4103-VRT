@@ -47,7 +47,9 @@ Equipo #3
 ##Listado de escenarios: 
  
 [Escenarios de prueba cypress](https://github.com/tpambor/MISW4103-E2E/wiki/Escenarios-de-prueba-Cypress)
+
 [Escenarios de prueba kraken](https://github.com/tpambor/MISW4103-E2E/wiki/Escenarios-de-prueba-Kraken)   
+
 ##Ventajas y desventajas 
 
 [Ventajas y desventajas  Cypress y Kraken](Se-presenta-la-comparación-entre-los-frameworks--Cypress-y-Kraken)

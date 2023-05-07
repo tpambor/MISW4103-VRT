@@ -9,7 +9,7 @@ const EditProfilePage = {
     inputLocation: "#user-location",
     facebook: "#user-facebook",
     twitter: "#user-twitter",
-
+    website: "#user-website",
     inputBio: "#user-bio",
 
     saveBtn: ".gh-btn-blue",

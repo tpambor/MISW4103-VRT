@@ -44,5 +44,10 @@ async function leave(driver){
     return buttonLeave.click();
 }
 
-module.exports = {fillInName, fillInColor, fillInShortDescription,getDescriptionErrorMessage, save, getSlug, getErrorMessage, 
+async function leaveStaff(driver){
+    let buttonLeave = await driver.$('.gh-btn-red');
+    return buttonLeave.click();
+}
+
+module.exports = {fillInName, fillInColor, fillInShortDescription,getDescriptionErrorMessage,leaveStaff, save, getSlug, getErrorMessage, 
     getColorErrorMessage, leave};

@@ -162,6 +162,14 @@ When("I click in Staff", async function () {
     return await element.setValue(name);
   });
 
+  When("I fill profile long bio with text", async function () {
+    name = faker.lorem.words(100);
+    let element = await this.driver.$(global.EditProfilePage.staff.inputBio);
+    return await element.setValue(name);
+  });
+  
+  
+
   Then("I should see user full name in list with text {string}",async function (name) {
         let element = await this.driver.$(global.EditProfilePage.staff.inputName);
         const actualTitle = await element.getValue();
@@ -198,7 +206,11 @@ When("I click in Staff", async function () {
     expect(actualTitle).to.equal(name);
   });
 
+  Then('I confirm leave page profile', async function() {
+    return await createTagPage.leaveStaff(this.driver);
+  });
 
+  
 // TAGS
 let tagName;
 let tagsNumber;

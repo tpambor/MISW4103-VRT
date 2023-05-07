@@ -1,7 +1,7 @@
 Feature: Crear tag
 
 @user1 @web
-Scenario: Create a tag with short description
+Scenario: Create a tag with long description
   Given I navigate to page "<BASE_URL>"
   And I wait for 2 seconds
   And I sign in with "<EMAIL>" and "<PASSWORD>"

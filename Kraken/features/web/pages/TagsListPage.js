@@ -11,4 +11,14 @@ async function getTag(driver, tagName) {
 	return await driver.$('*='.concat(tagName));
 }
 
-module.exports = {getSlugList, createNewTag, getTag};
+async function getNumberOfTags(driver) {
+	let list = await driver.$('ol');
+	let tagNumber;
+	//= await list.getProperty("childElementCount");
+	list.getProperty("childElementCount").then((value) => {
+		tagNumber = value;
+	});
+	return tagNumber;
+}
+
+module.exports = {getSlugList, createNewTag, getTag, getNumberOfTags};

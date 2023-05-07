@@ -2,7 +2,7 @@ const { Given, When, Then } = require('@cucumber/cucumber');
 const { expect } = require('chai');
 const { faker } = require('@faker-js/faker');
 
-require("./EditProfilePage");
+//require("./EditProfilePage");
 
 const createPostPage = require("../pages/CreatePostPage");
 const postsListPage = require("../pages/PostsListPage");
@@ -101,12 +101,13 @@ Then('I filter by Scheduled posts', async function () {
 Then('I see the post {kraken-string} in the list', async function(postTitle) {
     let postTitleComplete = "Post ".concat(postTitle);
     let postListed = await postsListPage.getPost(this.driver, postTitleComplete);
+    let actualPostTitle = await postListed.getProperty("innerText");
+    expect(actualPostTitle).to.equal(postTitleComplete);
     return postListed.click();
 });
 
 Then('I could navigate to page with {kraken-string}', async function(url) {
     let completeURL = "http://localhost:2368/".concat(url);
-    console.log(completeURL);
     return await this.driver.url(completeURL);
 });
 
@@ -200,6 +201,11 @@ When("I click in Staff", async function () {
 
 // TAGS
 let tagName;
+let tagsNumber;
+
+When('I count the number of tags', async function () {
+  tagsNumber = await tagsListPage.getNumberOfTags(this.driver);
+});
 
 When('I create a new tag', async function () {
     return await tagsListPage.createNewTag(this.driver);
@@ -210,6 +216,16 @@ When('I fill in the name', async function () {
     return await createTagPage.fillInName(this.driver,tagName);
 });
 
+When('I fill in the color', async function () {
+  let color = "006600";  //faker.color.rgb({ prefix: '' })
+  return await createTagPage.fillInColor(this.driver, color);
+});
+
+When('I fill in the color with a word', async function () {
+  let color = faker.lorem.words(1);
+  return await createTagPage.fillInColor(this.driver, color);
+});
+
 When('I save', async function () {
     return await createTagPage.save(this.driver);
 });
@@ -217,4 +233,23 @@ When('I save', async function () {
 Then('I see the tag in the list of tags', async function() {
     let tagListed = await tagsListPage.getTag(this.driver,tagName);
     return tagListed.click();
+});
+
+Then('I see a name error message', async function() {
+  let message = await createTagPage.getErrorMessage(this.driver);
+  expect(message).to.equal("You must specify a name for the tag.");
+});
+
+Then('I see a color error message', async function() {
+  let message = await createTagPage.getColorErrorMessage(this.driver);
+  expect(message).to.equal("The color should be in valid hex format");
+});
+
+Then('I confirm leave page', async function() {
+  return await createTagPage.leave(this.driver);
+});
+
+Then('I see the same number of tags as before', async function () {
+  let actualTags = await tagsListPage.getNumberOfTags(this.driver);
+  expect(actualTags).to.equal(tagsNumber);
 });

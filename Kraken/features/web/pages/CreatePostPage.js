@@ -1,5 +1,5 @@
 async function getTitleArea(driver) {
-	return await driver.$('textarea[placeholder="Post Title"]');
+	return await driver.$('textarea.gh-editor-title');
 }
 
 async function getPostArea(driver) {

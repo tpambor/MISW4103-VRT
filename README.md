@@ -9,12 +9,11 @@ Equipo #3
 
 ## Funcionalidades bajo pruebas
 1. Crear un Post: Permite crear un nuevo post (una entrada o publicación con título y texto) en el sitio web, puede ser para publicar inmediatamente o para publicar después, en una fecha y hora programadas. También es posible crear un post “borrador”, es decir, que todavía no está publicado ni programado, para continuar en otro momento.
-2. Editar un Post: Permite modificar la información de un post existente, como el título, el texto, los tags, entre otros. También incluye la posibilidad de quitar una publicación de un post (es decir, quedaría en el listado para su gestión, pero no aparecería en el sitio web), o publicar uno que estaba en borrador.
+2. Listar Post: Permite ver todos los post creados 
 3. Crear una Página: Permite crear una nueva página para el sitio web (con nombre, texto y posible contenido multimedia), que tendrá un enlace para su consulta desde la página inicial. 
 4. Editar una Página: Permite modificar la información de una página existente, como el título, el texto, los tags, entre otros.
 5. Crear tag: Permite crear una nueva etiqueta para clasificar los post o páginas. Las etiquetas, además de su nombre y su alias (“slug”), pueden tener una descripción y una imagen asociada.
 6. Editar perfil: Permite modificar la información de un perfil existente, como la foto, correo, entre otros.
-7. Login.
 
 ## Instrucciones para ejecutar pruebas Cypress
 1. Clonar este repositorio

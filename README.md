@@ -44,12 +44,12 @@ Equipo #3
     * si se instaló solo en la carpeta se ejecuta: `./node_modules/kraken-node/bin/kraken-node run`
    
    
-##Listado de escenarios: 
+## Listado de escenarios: 
  
 [Escenarios de prueba cypress](https://github.com/tpambor/MISW4103-E2E/wiki/Escenarios-de-prueba-Cypress)
 
 [Escenarios de prueba kraken](https://github.com/tpambor/MISW4103-E2E/wiki/Escenarios-de-prueba-Kraken)   
 
-##Ventajas y desventajas 
+## Ventajas y desventajas 
 
 [Ventajas y desventajas  Cypress y Kraken](Se-presenta-la-comparación-entre-los-frameworks--Cypress-y-Kraken)

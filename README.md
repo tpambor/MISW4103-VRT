@@ -46,4 +46,4 @@ Equipo #3
    
 Ventajas y desventajas 
 
-[Se-presenta-la-comparación-entre-los-frameworks--Cypress-y-Kraken](Se-presenta-la-comparación-entre-los-frameworks--Cypress-y-Kraken)
+[Ventajas y desventajas  Cypress y Kraken](Se-presenta-la-comparación-entre-los-frameworks--Cypress-y-Kraken)

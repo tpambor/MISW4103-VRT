@@ -1,0 +1,30 @@
+Feature: Edit profile
+
+  @user1 @web
+  Scenario: Start Session in ghost, go to section staff, edit bio, and save.
+    Given I navigate to page "<BASE_URL>"
+    And I wait for 2 seconds
+    And I sign in with "<EMAIL>" and "<PASSWORD>"
+    And I wait for 2 seconds
+    When I navigate to page "<STAFF_PAGE>"
+    And I wait for 2 seconds
+    And I click in author user to modify
+    And I wait for 2 seconds
+    And I fill profile bio with text "You can delete this user to remove all the welcome posts"
+    And I wait for 1 seconds
+    And I save edit profile changes
+    And I wait for 2 seconds
+    When I navigate to page "<STAFF_PAGE>"
+    And I wait for 2 seconds
+    And I click in author user to modify
+    And I wait for 2 seconds
+    Then I should see user bio in list with text "You can delete this user to remove all the welcome posts"
+
+    And I fill profile bio with text "hello"
+    And I save edit profile changes
+    And I wait for 2 seconds
+    When I navigate to page "<STAFF_PAGE>"
+    And I wait for 2 seconds
+    And I click in author user to modify
+    And I wait for 2 seconds
+    Then I should see user bio in list with text "hello"

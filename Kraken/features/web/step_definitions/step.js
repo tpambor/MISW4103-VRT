@@ -1,6 +1,7 @@
 const { Given, When, Then } = require('@cucumber/cucumber');
-const assert = require('assert')
-//const { faker } = require('@faker-js/faker');
+const { expect } = require('chai');
+
+require("./EditProfilePage");
 
 const createPostPage = require("../pages/CreatePostPage");
 const postsListPage = require("../pages/PostsListPage");
@@ -87,3 +88,93 @@ Then('I could navigate to page with {kraken-string}', async function(url) {
     console.log(completeURL);
     return await this.driver.url(completeURL);
 });
+
+
+//STAFF
+When("I click in Staff", async function () {
+    let element = await this.driver.$(global.EditProfilePage.staff.linkSideMenu);
+    return await element.click();
+  });
+  
+  When("I click in author user to modify", async function () {
+    let element = await this.driver.$(global.EditProfilePage.staff.userToEdit);
+    return await element.click();
+  });
+
+  When("I fill profile fullname with text {string}", async function (name) {
+    console.log("Filling staff fullname with text: " + name);
+    let element = await this.driver.$(global.EditProfilePage.staff.inputName);
+    return await element.setValue(name);
+  });
+  When("I save edit profile changes", async function () {
+    let element = await this.driver.$(global.EditProfilePage.staff.saveBtn);
+    return await element.click();
+  });
+  
+  When("I fill profile location with text {string}", async function (name) {
+    console.log("lcation with text: " + name);
+    let element = await this.driver.$(global.EditProfilePage.staff.inputLocation);
+    return await element.setValue(name);
+  });
+
+
+  When("I fill profile Website with text {string}", async function (name) {
+    console.log("Website with text: " + name);
+    let element = await this.driver.$(global.EditProfilePage.staff.website);
+    return await element.setValue(name);
+  });
+
+  When("I fill profile facebook with text {string}", async function (name) {
+    console.log("facebook with text: " + name);
+    let element = await this.driver.$(global.EditProfilePage.staff.facebook);
+    return await element.setValue(name);
+  });
+
+  When("I fill profile twitter with text {string}", async function (name) {
+    console.log("twitter with text: " + name);
+    let element = await this.driver.$(global.EditProfilePage.staff.twitter);
+    return await element.setValue(name);
+  });
+
+  
+  When("I fill profile bio with text {string}", async function (name) {
+    console.log("bio with text: " + name);
+    let element = await this.driver.$(global.EditProfilePage.staff.inputBio);
+    return await element.setValue(name);
+  });
+
+  Then("I should see user full name in list with text {string}",async function (name) {
+        let element = await this.driver.$(global.EditProfilePage.staff.inputName);
+        const actualTitle = await element.getValue();
+        expect(actualTitle).to.equal(name);
+    }
+  );
+
+  Then("I should see user location in list with text {string}",async function (name) {
+    let element = await this.driver.$(global.EditProfilePage.staff.inputLocation);
+    const actualTitle = await element.getValue();
+    expect(actualTitle).to.equal(name);
+  });
+
+  Then("I should see user Website in list with text {string}",async function (name) {
+    let element = await this.driver.$(global.EditProfilePage.staff.website);
+    const actualTitle = await element.getValue();
+    expect(actualTitle).to.equal(name);
+  });
+  Then("I should see user facebook in list with text {string}",async function (name) {
+    let element = await this.driver.$(global.EditProfilePage.staff.facebook);
+    const actualTitle = await element.getValue();
+    expect(actualTitle).to.equal(name);
+  });
+
+  Then("I should see user twitter in list with text {string}",async function (name) {
+    let element = await this.driver.$(global.EditProfilePage.staff.twitter);
+    const actualTitle = await element.getValue();
+    expect(actualTitle).to.equal(name);
+  });
+
+  Then("I should see user bio in list with text {string}",async function (name) {
+    let element = await this.driver.$(global.EditProfilePage.staff.inputBio);
+    const actualTitle = await element.getValue();
+    expect(actualTitle).to.equal(name);
+  });

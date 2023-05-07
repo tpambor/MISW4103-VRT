@@ -1,0 +1,30 @@
+Feature: Editprofile-2
+
+  @user1 @web
+  Scenario: Start Session in ghost, go to section profile, edit full name save.
+    Given I navigate to page "<BASE_URL>"
+    And I wait for 2 seconds
+    And I sign in with "<EMAIL>" and "<PASSWORD>"
+    And I wait for 2 seconds
+    When I navigate to page "<STAFF_PAGE>"
+    And I wait for 2 seconds
+    And I click in author user to modify
+    And I wait for 2 seconds
+    And I fill profile fullname with text "Randy"
+    And I wait for 1 seconds
+    And I save edit profile changes
+    And I wait for 2 seconds
+    When I navigate to page "<STAFF_PAGE>"
+    And I wait for 2 seconds
+    And I click in author user to modify
+    And I wait for 2 seconds
+    Then I should see user full name in list with text "Randy"
+
+    And I fill profile fullname with text "ghostTest"
+    And I save edit profile changes
+    And I wait for 2 seconds
+    When I navigate to page "<STAFF_PAGE>"
+    And I wait for 2 seconds
+    And I click in author user to modify
+    And I wait for 2 seconds
+    Then I should see user full name in list with text "ghostTest"

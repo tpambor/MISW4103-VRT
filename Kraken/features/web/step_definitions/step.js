@@ -1,5 +1,6 @@
 const { Given, When, Then } = require('@cucumber/cucumber');
 const { expect } = require('chai');
+const { faker } = require('@faker-js/faker');
 
 require("./EditProfilePage");
 
@@ -7,7 +8,9 @@ const createPostPage = require("../pages/CreatePostPage");
 const postsListPage = require("../pages/PostsListPage");
 const loginPage = require("../pages/LoginPage");
 const tagsListPage = require("../pages/TagsListPage");
+const createTagPage = require("../pages/CreateTagPage");
 
+//POSTS
 Given('I sign in with {kraken-string} and {kraken-string}', async function (email, password) {
     return await loginPage.login(this.driver, email, password);
 });
@@ -96,7 +99,8 @@ Then('I filter by Scheduled posts', async function () {
 });
 
 Then('I see the post {kraken-string} in the list', async function(postTitle) {
-    let postListed = await postsListPage.getPost(this.driver, postTitle);
+    let postTitleComplete = "Post ".concat(postTitle);
+    let postListed = await postsListPage.getPost(this.driver, postTitleComplete);
     return postListed.click();
 });
 
@@ -105,7 +109,6 @@ Then('I could navigate to page with {kraken-string}', async function(url) {
     console.log(completeURL);
     return await this.driver.url(completeURL);
 });
-
 
 //STAFF
 When("I click in Staff", async function () {
@@ -134,7 +137,6 @@ When("I click in Staff", async function () {
     return await element.setValue(name);
   });
 
-
   When("I fill profile Website with text {string}", async function (name) {
     console.log("Website with text: " + name);
     let element = await this.driver.$(global.EditProfilePage.staff.website);
@@ -153,7 +155,6 @@ When("I click in Staff", async function () {
     return await element.setValue(name);
   });
 
-  
   When("I fill profile bio with text {string}", async function (name) {
     console.log("bio with text: " + name);
     let element = await this.driver.$(global.EditProfilePage.staff.inputBio);
@@ -195,3 +196,25 @@ When("I click in Staff", async function () {
     const actualTitle = await element.getValue();
     expect(actualTitle).to.equal(name);
   });
+
+
+// TAGS
+let tagName;
+
+When('I create a new tag', async function () {
+    return await tagsListPage.createNewTag(this.driver);
+});
+
+When('I fill in the name', async function () {
+    tagName = faker.lorem.words(2);
+    return await createTagPage.fillInName(this.driver,tagName);
+});
+
+When('I save', async function () {
+    return await createTagPage.save(this.driver);
+});
+
+Then('I see the tag in the list of tags', async function() {
+    let tagListed = await tagsListPage.getTag(this.driver,tagName);
+    return tagListed.click();
+});

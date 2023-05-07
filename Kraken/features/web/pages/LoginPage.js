@@ -1,9 +1,9 @@
 async function login(driver, email, password) {
-    let fldEmail = await driver.$('#ember8');
+    let fldEmail = await driver.$('input[name="identification"]');
     await fldEmail.setValue(email);
-	let fldPwd = await driver.$('#ember10');
+	let fldPwd = await driver.$('input[name="password"]');
     await fldPwd.setValue(password);
-	let btnSignIn = await driver.$('#ember12');
+	let btnSignIn = await driver.$('button[type="submit"]');
     return await btnSignIn.click();
 }
 

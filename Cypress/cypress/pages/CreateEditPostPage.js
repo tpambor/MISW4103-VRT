@@ -1,4 +1,5 @@
 import PostListPage from "./PostListPage";
+import PostSettings from "./PostSettings";
 
 class CreateEditPostPage {
   fillTitle(value) {
@@ -17,9 +18,35 @@ class CreateEditPostPage {
   }
 
   goToPosts() {
-    cy.get('a').contains('Posts').click()
+    cy.get('.gh-editor-header').should('not.contain', 'Saving');
+    cy.get('a').contains('Posts').click();
 
     return new PostListPage();
+  }
+
+  publish() {
+    cy.get('.gh-editor-header').should('not.contain', 'Saving');
+    cy.get('.gh-publishmenu-trigger').click();
+    cy.get('.gh-publishmenu-radio-label').contains('Set it live now').click();
+    cy.get('.gh-publishmenu-button').click();
+
+    return this;
+  }
+
+  publishLater() {
+    cy.get('.gh-editor-header').should('not.contain', 'Saving');
+    cy.get('.gh-publishmenu-trigger').click();
+    cy.get('.gh-publishmenu-radio-label').contains('Schedule it for later').click();
+    cy.get('.gh-publishmenu-button').click();
+
+    return this;
+  }
+
+  openSettings() {
+    cy.get('.gh-editor-header').should('not.contain', 'Saving');
+    cy.get('button[title="Settings"]').click();
+
+    return new PostSettings();
   }
 }
 

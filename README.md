@@ -44,3 +44,6 @@ Equipo #3
     * si se tiene instalado globalmente se ejecuta: `kraken-node run`  (o `node kraken-node run`)
     * si se instaló solo en la carpeta se ejecuta: `./node_modules/kraken-node/bin/kraken-node run`
    
+Ventajas y desventajas 
+
+[Se-presenta-la-comparación-entre-los-frameworks--Cypress-y-Kraken](Se-presenta-la-comparación-entre-los-frameworks--Cypress-y-Kraken)

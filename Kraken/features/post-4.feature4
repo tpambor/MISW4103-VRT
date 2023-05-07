@@ -1,0 +1,25 @@
+Feature: Crear Posts
+
+@user1 @web
+Scenario: Create and publish a post with a slug
+  Given I navigate to page "<BASE_URL>"
+  And I wait for 2 seconds
+  And I sign in with "<EMAIL>" and "<PASSWORD>"
+  And I wait for 2 seconds
+  When I navigate to page "<POSTS_PAGE>"
+  And I wait for 2 seconds
+  And I select create new Post
+  And I wait for 2 seconds
+  And I put as title "$string_1"
+  And I click on description area
+  And I click on publish link
+  And I wait for 2 seconds
+  And I click on publish button
+  And I wait for 2 seconds
+  And I click on description area
+  And I click on post settings
+  And I change the slug with "$number_1"
+  And I click on close settings
+  And I click on posts link
+  And I wait for 2 seconds
+  Then I could navigate to page with "$$number_1"

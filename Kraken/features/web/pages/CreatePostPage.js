@@ -22,6 +22,10 @@ async function getSettingsBtn(driver){
 	return await driver.$('.post-settings');
 }
 
+async function getOptSchedule(driver){
+	return await driver.$('/html/body/div[1]/div/div/section/div/div[2]/div[1]');
+}
+
 async function getSettingsCloseBtn(driver){
 	return await driver.$('button[aria-label="Close"]');
 }
@@ -37,5 +41,5 @@ async function selectTag(driver, tag){
 	return await tagSelector.click();
 }
 
-module.exports = {getTitleArea, getPostArea, getPostsLink, getPublishLink, 
-	getPublishBtn, getSettingsBtn, getUrlArea, getSettingsCloseBtn, selectTag};
+module.exports = {getTitleArea, getPostArea, getPostsLink, getPublishLink, getPublishBtn, 
+	getSettingsBtn, getUrlArea, getOptSchedule, getSettingsCloseBtn, selectTag};

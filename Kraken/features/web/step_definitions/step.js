@@ -65,6 +65,16 @@ When('I click on publish button', async function () {
     return await publishBtn.click();
 });
 
+When('I select schedule it for later', async function () {
+    let optSchedule = await createPostPage.getOptSchedule(this.driver);
+    return await optSchedule.click();
+});
+
+When('I click on schedule button', async function () {
+    let publishBtn = await createPostPage.getPublishBtn(this.driver);
+    return await publishBtn.click();
+});
+
 When('I click on posts link', async function () {
     let postsLink = await createPostPage.getPostsLink(this.driver);
     return await postsLink.click();
@@ -73,7 +83,14 @@ When('I click on posts link', async function () {
 Then('I filter by Published posts', async function () {
     let filter = await postsListPage.getAllPostFilter(this.driver);
     await filter.click();
-    let selection = await postsListPage.selectFilter(this.driver,"Published posts");
+    let selection = await postsListPage.selectPublished(this.driver);
+    return await selection.click();
+});
+
+Then('I filter by Scheduled posts', async function () {
+    let filter = await postsListPage.getAllPostFilter(this.driver);
+    await filter.click();
+    let selection = await postsListPage.selectScheduled(this.driver);
     return await selection.click();
 });
 

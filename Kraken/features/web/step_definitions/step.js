@@ -16,7 +16,7 @@ Given('I sign in with {kraken-string} and {kraken-string}', async function (emai
 });
 
 Given('I see the posts of tag {string}', async function (tag) {
-    let postLink = await tagsListPage.getPostLink(this.driver,tag);
+    let postLink = await createPostPage.getPostsLink(this.driver,tag);
     return await postLink.click();
 });
 

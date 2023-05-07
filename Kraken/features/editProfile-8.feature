@@ -1,0 +1,21 @@
+Feature: Edit profile
+
+  @user1 @web
+  Scenario: Save a Profile without making changes
+   Given I navigate to page "<BASE_URL>"
+    And I wait for 2 seconds
+    And I sign in with "<EMAIL>" and "<PASSWORD>"
+    And I wait for 2 seconds
+    When I navigate to page "<STAFF_PAGE>"
+    And I wait for 2 seconds
+    And I click in author user to modify
+    And I wait for 2 seconds
+    And I fill profile long bio with text
+    And I wait for 1 seconds
+    And I save edit profile changes
+    And I wait for 2 seconds
+    When I navigate to page "<STAFF_PAGE>"
+    And I wait for 2 seconds
+    And I confirm leave page profile
+    And I wait for 2 seconds
+   

@@ -8,14 +8,8 @@ Equipo #3
 - Tim Ulf Pambor, t.pambor@uniandes.edu.co​​
 
 ## Funcionalidades bajo pruebas
-1. Crear un post: Permite crear un nuevo post (una entrada o publicación con título y texto) en el sitio web, puede ser como borrador o para publicar en el sitio. También permite definir alguna configuración adicional, como el alias ("slug"), tags, etc.
-2. Listar posts: Permite ver todos los post creados, con su título, autor y estado. Se pueden filtrar por estado, autor o etiqueta (tag).
-3. Crear una página: Permite crear una nueva página para el sitio web (con nombre, texto y posible contenido multimedia), que tendrá un enlace para su consulta desde la página inicial. 
-4. Listar páginas: Permite modificar la información de una página existente, como el título, el texto, los tags, entre otros.
-5. Crear tag: Permite crear una nueva etiqueta para clasificar los post o páginas. Las etiquetas, además de su nombre y su alias (“slug”), pueden tener una descripción y una imagen asociada.
-6. Listar tags: Permite ver todos los tags (etiquetas) creados, con su título, alias ("slug") y número de posts asociados.
-7. Editar perfil: Permite modificar la información de un perfil existente,facebook, twitter, nombre completo, biografia y locación.
-8. Ingresar (“sign in”): Permite que un usuario registrado (incluyendo el administrador) tenga acceso a las funciones del sistema. Para ingresar debe escribir su correo, que lo identifica, y una contraseña.
+
+[Funcionalidades bajo pruebas](https://github.com/tpambor/MISW4103-E2E/wiki/Funcionalidades-bajo-pruebas)
 
 ## Instrucciones para ejecutar pruebas Cypress
 1. Clonar este repositorio

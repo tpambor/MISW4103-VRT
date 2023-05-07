@@ -39,7 +39,7 @@ Equipo #3
 2. Crear, en Ghost, un usuario (puede ser el usuario administrador) y tener un sitio (puede ser el que se crea por defecto).
 2. Clonar este repositorio
 3. Ir a la carpeta Kraken
-4. En caso de no tener instalado Kraken, instalarlo con `npm install kraken-node`. Se puede ver más información sobre el uso de Kraken en este [tutorial] (https://thesoftwaredesignlab.github.io/AutTestingCodelabs/kraken-web-testing-tool/index.html)
+4. En caso de no tener instalado Kraken, instalarlo con `npm install kraken-node`. Se puede ver más información sobre el uso de Kraken en este [tutorial](https://thesoftwaredesignlab.github.io/AutTestingCodelabs/kraken-web-testing-tool/index.html)
 5. Abrir el archivo `properties.json` y actualizar los enlaces, el email y el password correspondientes a la instalación que tiene de Ghost
 6. Renombrar el archivo que se desee ejecutar para que tenga la extensión "feature" (solo un archivo con esta extensión cada vez).
 6. Ejecutar Kraken:

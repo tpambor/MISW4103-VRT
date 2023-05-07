@@ -46,7 +46,7 @@ Equipo #3
    
  Listado de escenarios: 
  
-[Escenarios de prueba] (Escenarios-de-prueba)
+[Escenarios de prueba](Escenarios-de-prueba)
    
 Ventajas y desventajas 
 

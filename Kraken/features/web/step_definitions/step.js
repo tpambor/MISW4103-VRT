@@ -112,6 +112,7 @@ Then('I could navigate to page with {kraken-string}', async function(url) {
 });
 
 //STAFF
+let fullName;
 When("I click in Staff", async function () {
     let element = await this.driver.$(global.EditProfilePage.staff.linkSideMenu);
     return await element.click();
@@ -163,9 +164,9 @@ When("I click in Staff", async function () {
   });
 
   When("I fill profile long bio with text", async function () {
-    name = faker.lorem.words(100);
+    fullName = faker.lorem.words(100);
     let element = await this.driver.$(global.EditProfilePage.staff.inputBio);
-    return await element.setValue(name);
+    return await element.setValue(fullName);
   });
   
   

@@ -1,6 +1,7 @@
 import TagListPage from "./TagListPage";
 import PageListPage from "./PageListPage";
 import StaffListPage from "./StaffListPage";
+import PostListPage from "./PostListPage";
 
 class Navigation {
   getUsername() {
@@ -11,6 +12,12 @@ class Navigation {
     cy.get('nav li a').contains('Tags').click()
 
     return new TagListPage()
+  }
+
+  goToPosts() {
+    cy.get('nav li a').contains('Posts').click()
+
+    return new PostListPage();
   }
 
   goToPages() {

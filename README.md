@@ -1,6 +1,6 @@
-# MISW4103 Semana 5
+# MISW4103 Semana 6
 
-## Pruebas E2E
+## Pruebas de regresión visual
 Equipo #3
 - Laura Alejandra Carrillo Guzmán, l.carrillog@uniandes.edu.co​​
 - Sandra Victoria Hurtado Gil, sv.hurtadog@uniandes.edu.co​​

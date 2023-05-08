@@ -7,7 +7,7 @@ on:
     paths: 
     - 'Cypress/**'
 jobs:
-  cypress-run:
+  cypress-ghost3:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -16,6 +16,29 @@ jobs:
         uses: cypress-io/github-action@v5
         with:
           start: docker run --rm -t -p 2368:2368 ghost:3.41.1
+          working-directory: Cypress
+          wait-on: 'http://localhost:2368'
+      - run: touch Cypress/cypress/screenshots && touch Cypress/cypress/videos
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: cypress-screenshots
+          path: Cypress/cypress/screenshots
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: cypress-videos
+          path: Cypress/cypress/videos
+          
+  cypress-ghost4:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Cypress run
+        uses: cypress-io/github-action@v5
+        with:
+          start: docker run --rm -t -p 2368:2368 ghost:4.44.0
           working-directory: Cypress
           wait-on: 'http://localhost:2368'
       - run: touch Cypress/cypress/screenshots && touch Cypress/cypress/videos

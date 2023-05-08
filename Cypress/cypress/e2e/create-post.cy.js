@@ -1,12 +1,25 @@
 import { faker } from '@faker-js/faker'
 import Navigation from "../pages/Navigation"
+import PageFactory from '../pages/PageFactory';
 
 describe('Create post tests', () => {
+  let pageFactory;
+
+  before(() => {
+    cy.request('/').then((response) => {
+      const parser = new DOMParser()
+      const doc = parser.parseFromString(response.body, 'text/html')
+      const version = doc.querySelector('meta[name="generator"]').content
+      pageFactory = new PageFactory(version)
+      return version
+    }).should('contain', 'Ghost')
+  })
+
   it('Create a draft post with only the title', () => {
     const nav = new Navigation()
 
     // Given that I am a authenticated user visiting Ghost
-    cy.authenticate()
+    cy.authenticate(pageFactory)
 
     // When I navigate to the posts page
     const createPost = nav.goToPosts()
@@ -30,7 +43,7 @@ describe('Create post tests', () => {
     const nav = new Navigation()
 
     // Given that I am a authenticated user visiting Ghost
-    cy.authenticate()
+    cy.authenticate(pageFactory)
 
     // When I navigate to the posts page
     const createPost = nav.goToPosts()
@@ -54,7 +67,7 @@ describe('Create post tests', () => {
     const nav = new Navigation()
 
     // Given that I am a authenticated user visiting Ghost
-    cy.authenticate()
+    cy.authenticate(pageFactory)
 
     // When I navigate to the posts page
     const createPost = nav.goToPosts()
@@ -80,7 +93,7 @@ describe('Create post tests', () => {
     const nav = new Navigation()
 
     // Given that I am a authenticated user visiting Ghost
-    cy.authenticate()
+    cy.authenticate(pageFactory)
 
     // When I navigate to the posts page
     const createPost = nav.goToPosts()
@@ -118,7 +131,7 @@ describe('Create post tests', () => {
     const nav = new Navigation()
 
     // Given that I am a authenticated user visiting Ghost
-    cy.authenticate()
+    cy.authenticate(pageFactory)
 
     // And that I have a tag "Getting Started"
     nav.goToTags()
@@ -155,7 +168,7 @@ describe('Create post tests', () => {
     const nav = new Navigation()
 
     // Given that I am a authenticated user visiting Ghost
-    cy.authenticate()
+    cy.authenticate(pageFactory)
 
     // When I navigate to the posts page
     const createPost = nav.goToPosts()

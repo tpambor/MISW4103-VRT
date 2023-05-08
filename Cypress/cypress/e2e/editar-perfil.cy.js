@@ -1,12 +1,25 @@
 import { faker } from '@faker-js/faker'
 import Navigation from "../pages/Navigation"
+import PageFactory from '../pages/PageFactory';
 
 describe('Editar Perfil tests', () => {
+  let pageFactory;
+
+  before(() => {
+    cy.request('/').then((response) => {
+      const parser = new DOMParser()
+      const doc = parser.parseFromString(response.body, 'text/html')
+      const version = doc.querySelector('meta[name="generator"]').content
+      pageFactory = new PageFactory(version)
+      return version
+    }).should('contain', 'Ghost')
+  })
+
   it('Edit Profile with full name', () => {
     const nav = new Navigation()
 
     // Given that I am a authenticated user visiting Ghost
-    cy.authenticate()
+    cy.authenticate(pageFactory)
     
     // When I navigate to the staff page
     const staffList = nav.goToStaff()
@@ -29,7 +42,7 @@ describe('Editar Perfil tests', () => {
     const nav = new Navigation()
 
     // Given that I am a authenticated user visiting Ghost
-    cy.authenticate()
+    cy.authenticate(pageFactory)
 
     // When I navigate to the staff page
     const staffList = nav.goToStaff()
@@ -52,7 +65,7 @@ describe('Editar Perfil tests', () => {
     const nav = new Navigation()
 
     // Given that I am a authenticated user visiting Ghost
-    cy.authenticate()
+    cy.authenticate(pageFactory)
 
     // When I navigate to the staff page
     const staffList = nav.goToStaff()
@@ -75,7 +88,7 @@ describe('Editar Perfil tests', () => {
     const nav = new Navigation()
 
     // Given that I am a authenticated user visiting Ghost
-    cy.authenticate()
+    cy.authenticate(pageFactory)
 
     // When I navigate to the staff page
     const staffList = nav.goToStaff()
@@ -98,7 +111,7 @@ describe('Editar Perfil tests', () => {
     const nav = new Navigation()
 
     // Given that I am a authenticated user visiting Ghost
-    cy.authenticate()
+    cy.authenticate(pageFactory)
 
     // When I navigate to the staff page
     const staffList = nav.goToStaff()
@@ -121,7 +134,7 @@ describe('Editar Perfil tests', () => {
     const nav = new Navigation()
 
     // Given that I am a authenticated user visiting Ghost
-    cy.authenticate()
+    cy.authenticate(pageFactory)
 
     // When I navigate to the staff page
     const staffList = nav.goToStaff()
@@ -144,7 +157,7 @@ describe('Editar Perfil tests', () => {
     const nav = new Navigation()
 
     // Given that I am a authenticated user visiting Ghost
-    cy.authenticate()
+    cy.authenticate(pageFactory)
 
     // When I navigate to the staff page
     const staffList = nav.goToStaff()
@@ -167,7 +180,7 @@ describe('Editar Perfil tests', () => {
     const nav = new Navigation()
 
     // Given that I am a authenticated user visiting Ghost
-    cy.authenticate()
+    cy.authenticate(pageFactory)
 
     // When I navigate to the staff page
     const staffList = nav.goToStaff()

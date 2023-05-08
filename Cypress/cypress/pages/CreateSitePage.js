@@ -1,16 +1,26 @@
-class CreateSiteStepOne {
-  static get hash() {
+export class CreateSiteStepOneV3 {
+  get hash() {
+    return '#/setup/one';
+  }
+
+  nextStep() {
+    cy.contains('a', 'Create your account').click();
+
+    return new CreateSiteStepTwoV3();
+  }
+}
+
+export class CreateSiteStepOneV4 {
+  get hash() {
     return '#/setup';
   }
 
   nextStep() {
-    //cy.contains('a', 'Create your account').click();
-
-    return new CreateSiteStepTwo();
+    return new CreateSiteStepTwoV4();
   }
 }
 
-class CreateSiteStepTwo {
+class CreateSiteStepTwoV3 {
   fillBlogTitle(value) {
     cy.get('input[name="blog-title"]').type(value);
 
@@ -38,14 +48,29 @@ class CreateSiteStepTwo {
   nextStep() {
     cy.get('button[type="submit"]').click()
 
-    return new CreateSiteStepThree();
+    return new CreateSiteStepThreeV3();
   }
 }
 
-class CreateSiteStepThree {
+class CreateSiteStepTwoV4 extends CreateSiteStepTwoV3 {
+  nextStep() {
+    cy.get('button[type="submit"]').click()
+
+    return new CreateSiteStepThreeV4();
+  }
+}
+
+
+class CreateSiteStepThreeV3 {
   skip() {
     cy.contains('button', "I'll do this later, take me to my site!").click()
   }
 }
 
-export default CreateSiteStepOne;
+class CreateSiteStepThreeV4 {
+  skip() {
+    cy.wait(10000);
+    cy.visit('/ghost/');
+    cy.wait(10000);
+  }
+}

@@ -1,13 +1,26 @@
 import { faker } from '@faker-js/faker'
 import Navigation from "../pages/Navigation"
 import Modal from '../pages/Modal'
+import PageFactory from '../pages/PageFactory';
 
 describe('Create tag tests', () => {
+  let pageFactory;
+
+  before(() => {
+    cy.request('/').then((response) => {
+      const parser = new DOMParser()
+      const doc = parser.parseFromString(response.body, 'text/html')
+      const version = doc.querySelector('meta[name="generator"]').content
+      pageFactory = new PageFactory(version)
+      return version
+    }).should('contain', 'Ghost')
+  })
+
   it('Create a tag with a name', () => {
     const nav = new Navigation()
 
     // Given that I am a authenticated user visiting Ghost
-    cy.authenticate()
+    cy.authenticate(pageFactory)
 
     // When I navigate to the tags page
     const createTag = nav.goToTags()
@@ -33,7 +46,7 @@ describe('Create tag tests', () => {
     const nav = new Navigation()
 
     // Given that I am a authenticated user visiting Ghost
-    cy.authenticate()
+    cy.authenticate(pageFactory)
 
     // When I navigate to the tags page
     const tagList = nav.goToTags();
@@ -62,7 +75,7 @@ describe('Create tag tests', () => {
     const nav = new Navigation()
 
     // Given that I am a authenticated user visiting Ghost
-    cy.authenticate()
+    cy.authenticate(pageFactory)
 
     // When I navigate to the tags page
     const createTag = nav.goToTags()
@@ -90,7 +103,7 @@ describe('Create tag tests', () => {
     const nav = new Navigation()
 
     // Given that I am a authenticated user visiting Ghost
-    cy.authenticate()
+    cy.authenticate(pageFactory)
 
     // When I navigate to the tags page
     const tagList = nav.goToTags();
@@ -123,7 +136,7 @@ describe('Create tag tests', () => {
     const nav = new Navigation()
 
     // Given that I am a authenticated user visiting Ghost
-    cy.authenticate()
+    cy.authenticate(pageFactory)
 
     // When I navigate to the tags page
     const createTag = nav.goToTags()
@@ -151,7 +164,7 @@ describe('Create tag tests', () => {
     const nav = new Navigation()
 
     // Given that I am a authenticated user visiting Ghost
-    cy.authenticate()
+    cy.authenticate(pageFactory)
 
     // When I navigate to the tags page
     const tagList = nav.goToTags();
@@ -184,7 +197,7 @@ describe('Create tag tests', () => {
     const nav = new Navigation()
 
     // Given that I am a authenticated user visiting Ghost
-    cy.authenticate()
+    cy.authenticate(pageFactory)
 
     // When I navigate to the tags page
     const tagList = nav.goToTags();

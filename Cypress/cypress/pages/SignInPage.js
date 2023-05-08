@@ -1,5 +1,5 @@
 class SignInPage {
-  static get hash() {
+  get hash() {
     return '#/signin';
   }
 

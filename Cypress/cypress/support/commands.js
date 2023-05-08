@@ -1,20 +1,19 @@
 import { faker } from '@faker-js/faker'
-import CreateSiteStepOne from "../pages/CreateSitePage";
-import SignInPage from "../pages/SignInPage";
 import Navigation from "../pages/Navigation";
 
-Cypress.Commands.add('authenticate', () => {
+Cypress.Commands.add('authenticate', (pageFactory) => {
   // Go to the administration interface
   cy.visit('/ghost/')
+
+  const createSite = pageFactory.createSitePage();
+  const signIn = pageFactory.signInPage();
 
   // If we aren't already logged in we will be redirected to
   //   - the sign in page, if a site already has been created
   //   - the site creation wizard, if a site hasn't yet been created
-  cy.hash().should('be.oneOf', [SignInPage.hash, CreateSiteStepOne.hash])
+  cy.hash().should('be.oneOf', [signIn.hash, createSite.hash])
   cy.hash().then((hash) => {
-    if(hash === CreateSiteStepOne.hash) {
-      const createSite = new CreateSiteStepOne();
-
+    if(hash === createSite.hash) {
       createSite
         .nextStep()
         .fillBlogTitle(faker.company.name())
@@ -23,9 +22,7 @@ Cypress.Commands.add('authenticate', () => {
         .fillPassword(Cypress.env('password'))
         .nextStep()
         .skip()
-    } else if(hash === SignInPage.hash) {
-      const signIn = new SignInPage();
-
+    } else if(hash === signIn.hash) {
       signIn
         .fillUsername(Cypress.env('username'))
         .fillPassword(Cypress.env('password'))

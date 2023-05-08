@@ -6,6 +6,7 @@ on:
   pull_request:
     paths: 
     - 'Cypress/**'
+  workflow_dispatch:
 jobs:
   cypress-ghost3:
     runs-on: ubuntu-latest

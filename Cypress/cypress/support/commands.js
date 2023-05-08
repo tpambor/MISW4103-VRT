@@ -1,5 +1,4 @@
 import { faker } from '@faker-js/faker'
-import Navigation from "../pages/Navigation";
 
 Cypress.Commands.add('authenticate', (pageFactory) => {
   // Go to the administration interface
@@ -31,6 +30,7 @@ Cypress.Commands.add('authenticate', (pageFactory) => {
   })
 
   // Make sure that we have successfully logged in
-  const nav = new Navigation()
-  cy.get('.gh-nav-menu-details-sitetitle').should('exist');
+  const nav = pageFactory.navigation()
+  nav.getSitename().should('exist')
+  cy.wait(1000)
 })

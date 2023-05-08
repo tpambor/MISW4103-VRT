@@ -1,4 +1,5 @@
 import { CreateSiteStepOneV3, CreateSiteStepOneV4 } from "./CreateSitePage";
+import Navigation, { NavigationV4 } from "./Navigation";
 import SignInPage from "./SignInPage";
 
 class PageFactory {
@@ -17,6 +18,15 @@ class PageFactory {
 
     signInPage() {
         return new SignInPage();
+    }
+    
+    navigation() {
+        if (this.ghostVersion.startsWith('Ghost 3'))
+            return new Navigation();
+        else if (this.ghostVersion.startsWith('Ghost 4'))
+            return new NavigationV4();
+        else
+            throw "Unsupported version";
     }
 }
     

@@ -4,8 +4,8 @@ import StaffListPage from "./StaffListPage";
 import PostListPage from "./PostListPage";
 
 class Navigation {
-  getUsername() {
-    return cy.get('nav span.gh-user-email')
+  getSitename() {
+    return cy.get('.gh-nav-menu-details-blog');
   }
 
   goToTags() {
@@ -30,6 +30,12 @@ class Navigation {
     cy.get('nav li a').contains('Staff').click()
 
     return new StaffListPage();
+  }
+}
+
+export class NavigationV4 extends Navigation {
+  getSitename() {
+    return cy.get('.gh-nav-menu-details-sitetitle');
   }
 }
   

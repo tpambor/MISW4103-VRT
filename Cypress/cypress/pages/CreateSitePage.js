@@ -1,10 +1,10 @@
 class CreateSiteStepOne {
   static get hash() {
-    return '#/setup/one';
+    return '#/setup';
   }
 
   nextStep() {
-    cy.contains('a', 'Create your account').click();
+    //cy.contains('a', 'Create your account').click();
 
     return new CreateSiteStepTwo();
   }

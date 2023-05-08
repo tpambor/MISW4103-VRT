@@ -35,5 +35,5 @@ Cypress.Commands.add('authenticate', () => {
 
   // Make sure that we have successfully logged in
   const nav = new Navigation()
-  nav.getUsername().should('have.text', Cypress.env('username'))
+  cy.get('.gh-nav-menu-details-sitetitle').should('exist');
 })

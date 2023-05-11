@@ -1,18 +1,25 @@
-class CreateTagPage {
+import PageBase from "./PageBase";
+
+class CreateTagPage extends PageBase {
+  NAME = "CreateTag";
+
   fillName(value) {
     cy.get('input[name="name"]').type(value);
+    this.screenshot('fillName');
 
     return this;
   }
 
   fillColor(value) {
     cy.get('input[name="accent-color"]').type(value);
+    this.screenshot('fillColor');
 
     return this;
   }
 
   fillDescription(value) {
     cy.get('textarea[name="description"]').type(value);
+    this.screenshot('fillDescription');
 
     return this;
   }
@@ -20,6 +27,7 @@ class CreateTagPage {
   save() {
     let button = cy.contains('button', 'Save');
     button.click();
+    this.screenshot('save');
 
     return button.invoke('text')
       .should(($text) => {

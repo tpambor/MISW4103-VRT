@@ -2,6 +2,7 @@ import { faker } from '@faker-js/faker'
 import Navigation from "../pages/Navigation"
 import Modal from '../pages/Modal'
 import PageFactory from '../pages/PageFactory';
+import PageBase from '../pages/PageBase';
 
 describe('Create tag tests', () => {
   let pageFactory;
@@ -16,7 +17,11 @@ describe('Create tag tests', () => {
     }).should('contain', 'Ghost')
   })
 
-  it('Create a tag with a name', () => {
+  beforeEach(() => {
+    PageBase.resetStepCounter();
+  })
+
+  it('ESC01 - Create a tag with a name', () => {
     const nav = new Navigation()
 
     // Given that I am a authenticated user visiting Ghost
@@ -42,7 +47,7 @@ describe('Create tag tests', () => {
     })
   })
 
-  it('Create a tag without a name', () => {
+  it('ESC02 - Create a tag without a name', () => {
     const nav = new Navigation()
 
     // Given that I am a authenticated user visiting Ghost
@@ -71,7 +76,7 @@ describe('Create tag tests', () => {
     })
   })
 
-  it('Create a tag with a name and a color', () => {
+  it('ESC03 - Create a tag with a name and a color', () => {
     const nav = new Navigation()
 
     // Given that I am a authenticated user visiting Ghost
@@ -99,7 +104,7 @@ describe('Create tag tests', () => {
     })
   })
 
-  it('Create a tag with a name and a invalid color', () => {
+  it('ESC04 - Create a tag with a name and a invalid color', () => {
     const nav = new Navigation()
 
     // Given that I am a authenticated user visiting Ghost
@@ -132,7 +137,7 @@ describe('Create tag tests', () => {
     })
   })
 
-  it('Create a tag with a name and a short description', () => {
+  it('ESC05 - Create a tag with a name and a short description', () => {
     const nav = new Navigation()
 
     // Given that I am a authenticated user visiting Ghost
@@ -160,7 +165,7 @@ describe('Create tag tests', () => {
     })
   })
 
-  it('Create a tag with a name and a very long description', () => {
+  it('ESC06 - Create a tag with a name and a very long description', () => {
     const nav = new Navigation()
 
     // Given that I am a authenticated user visiting Ghost
@@ -193,7 +198,7 @@ describe('Create tag tests', () => {
     })
   })
 
-  it('Discard a new tag', () => {
+  it('ESC07 - Discard a new tag', () => {
     const nav = new Navigation()
 
     // Given that I am a authenticated user visiting Ghost

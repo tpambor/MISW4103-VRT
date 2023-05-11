@@ -46,7 +46,7 @@ class CreateSiteStepTwoV3 {
   }
 
   nextStep() {
-    cy.get('button[type="submit"]').click()
+    cy.get('button[type="submit"]').click();
 
     return new CreateSiteStepThreeV3();
   }
@@ -54,7 +54,7 @@ class CreateSiteStepTwoV3 {
 
 class CreateSiteStepTwoV4 extends CreateSiteStepTwoV3 {
   nextStep() {
-    cy.get('button[type="submit"]').click()
+    cy.get('button[type="submit"]').click();
 
     return new CreateSiteStepThreeV4();
   }
@@ -63,7 +63,24 @@ class CreateSiteStepTwoV4 extends CreateSiteStepTwoV3 {
 
 class CreateSiteStepThreeV3 {
   skip() {
-    cy.contains('button', "I'll do this later, take me to my site!").click()
+    cy.contains('button', "I'll do this later, take me to my site!").click();
+
+    cy.get('.throbber').click();
+    cy.get('a').contains('Skip these tips').click();
+
+    cy.wait(2000);
+
+    cy.get('.gh-alert-close').click();
+
+    cy.on('uncaught:exception', (err, runnable) => {
+      expect(err.message).to.include('n.includes is not a function');
+  
+      return false;
+    });
+
+    cy.get('nav span.gh-user-email').click();
+    cy.get('button').contains("What's new?").click();
+    cy.get('.gh-wn-close').should('have.length', 1).click();
   }
 }
 

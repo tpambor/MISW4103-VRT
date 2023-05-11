@@ -1,6 +1,7 @@
 import { faker } from '@faker-js/faker'
 import Navigation from "../pages/Navigation"
 import PageFactory from '../pages/PageFactory';
+import PageBase from '../pages/PageBase';
 
 describe('Create post tests', () => {
   let pageFactory;
@@ -15,7 +16,11 @@ describe('Create post tests', () => {
     }).should('contain', 'Ghost')
   })
 
-  it('Create a draft post with only the title', () => {
+  beforeEach(() => {
+    PageBase.resetStepCounter();
+  })
+
+  it('ESC01 - Create a draft post with only the title', () => {
     const nav = new Navigation()
 
     // Given that I am a authenticated user visiting Ghost
@@ -39,7 +44,7 @@ describe('Create post tests', () => {
       .filterDraftPosts().getPostNames().contains(postTitle)
   })
 
-  it('Create a draft post with title and description', () => {
+  it('ESC02 - Create a draft post with title and description', () => {
     const nav = new Navigation()
 
     // Given that I am a authenticated user visiting Ghost
@@ -63,7 +68,7 @@ describe('Create post tests', () => {
       .filterDraftPosts().getPostNames().contains(postTitle)
   })
 
-  it('Create and publish a post with title and description', () => {
+  it('ESC03 - Create and publish a post with title and description', () => {
     const nav = new Navigation()
 
     // Given that I am a authenticated user visiting Ghost
@@ -89,7 +94,7 @@ describe('Create post tests', () => {
       .filterPublishedPosts().getPostNames().contains(postTitle)
   })
 
-  it('Create and publish a post with a slug', () => {
+  it('ESC04 - Create and publish a post with a slug', () => {
     const nav = new Navigation()
 
     // Given that I am a authenticated user visiting Ghost
@@ -125,9 +130,10 @@ describe('Create post tests', () => {
 
     // And I can navigate to the post using the slug
     cy.visit('/' + postSlug + '/')
+    nav.screenshot('visitPage')
   })
 
-  it('Create a draft post with a tag', () => {
+  it('ESC05 - Create a draft post with a tag', () => {
     const nav = new Navigation()
 
     // Given that I am a authenticated user visiting Ghost
@@ -147,13 +153,14 @@ describe('Create post tests', () => {
     createPost
       // And I fill in the title
       .fillTitle(postTitle)
-      // And I fill in the description
-      .fillContent(faker.lorem.lines(10))
       // And I open the settings of the post
       .openSettings()
       .selectTag('Getting Started')
       // And I close the settings
       .close()
+
+    // And I fill in the description
+    createPost.fillContent(faker.lorem.lines(10))
 
     // And I go back to the list of posts
     const postList = createPost.goToPosts()
@@ -164,7 +171,7 @@ describe('Create post tests', () => {
     postList.filterByTag('Getting Started').getPostNames().contains(postTitle)
   })
 
-  it('Create a post scheduled for later', () => {
+  it('ESC06 - Create a post scheduled for later', () => {
     const nav = new Navigation()
 
     // Given that I am a authenticated user visiting Ghost

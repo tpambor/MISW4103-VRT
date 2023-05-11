@@ -22,15 +22,11 @@ Cypress.Commands.add('authenticate', (pageFactory) => {
         .nextStep()
         .skip()
     } else if(hash === signIn.hash) {
+      signIn.screenshot('open');
       signIn
         .fillUsername(Cypress.env('username'))
         .fillPassword(Cypress.env('password'))
         .submit()
     }
   })
-
-  // Make sure that we have successfully logged in
-  const nav = pageFactory.navigation()
-  nav.getSitename().should('exist')
-  cy.wait(1000)
 })

@@ -8,7 +8,9 @@ module.exports = defineConfig({
     baseUrl: 'http://localhost:2368',
     env: {
       username: 'pedro.rulfo@example.org',
-      password: '0123456789+'
+      password: '0123456789+',
+      fullName: 'Pedro Rulfo',
+      blogTitle: 'Mi blog de literatura'
     },
     setupNodeEvents(on, config) {
       // implement node event listeners here

@@ -1,10 +1,10 @@
 import TagListPage from "./TagListPage";
 import PageListPage from "./PageListPage";
 import StaffListPage from "./StaffListPage";
-import PostListPage from "./PostListPage";
+import { PostListPageV3, PostListPageV4 } from "./PostListPage";
 import PageBase from "./PageBase";
 
-class Navigation extends PageBase {
+export class NavigationV3 extends PageBase {
   NAME = "Navigation";
 
   goToTags() {
@@ -22,7 +22,7 @@ class Navigation extends PageBase {
 
     this.screenshot('goToPosts');
 
-    return new PostListPage();
+    return new PostListPageV3();
   }
 
   goToPages() {
@@ -38,11 +38,17 @@ class Navigation extends PageBase {
   }
 }
 
-export class NavigationV4 extends Navigation {
+export class NavigationV4 extends NavigationV3 {
+  goToPosts() {
+    cy.get('nav li a').contains('Posts').click();
+    cy.get('h3.gh-content-entry-title').should('exist');
+
+    this.screenshot('goToPosts');
+
+    return new PostListPageV4();
+  }
+  
   getSitename() {
     return cy.get('.gh-nav-menu-details-sitetitle');
   }
 }
-  
-export default Navigation;
-  

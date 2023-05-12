@@ -1,7 +1,7 @@
-import CreateEditPostPage from "./CreateEditPostPage";
+import { CreateEditPostPageV3, CreateEditPostPageV4 } from "./CreateEditPostPage";
 import PageBase from "./PageBase";
 
-class PostListPage extends PageBase {
+export class PostListPageV3 extends PageBase {
   NAME = "PostList";
 
   createNewPost() {
@@ -9,7 +9,7 @@ class PostListPage extends PageBase {
 
     this.screenshot('createNewPost');
 
-    return new CreateEditPostPage();
+    return new CreateEditPostPageV3();
   }
 
   getPostNames() {
@@ -65,4 +65,12 @@ class PostListPage extends PageBase {
   }
 }
     
-export default PostListPage;
+export class PostListPageV4 extends PostListPageV3 {
+  createNewPost() {
+    cy.contains('a', 'New post').click();
+
+    this.screenshot('createNewPost');
+
+    return new CreateEditPostPageV4();
+  }
+}

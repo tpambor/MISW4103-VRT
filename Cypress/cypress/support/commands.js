@@ -1,5 +1,3 @@
-import { faker } from '@faker-js/faker'
-
 Cypress.Commands.add('authenticate', (pageFactory) => {
   // Go to the administration interface
   cy.visit('/ghost/')
@@ -15,8 +13,8 @@ Cypress.Commands.add('authenticate', (pageFactory) => {
     if(hash === createSite.hash) {
       createSite
         .nextStep()
-        .fillBlogTitle(faker.company.name())
-        .fillName(faker.name.fullName())
+        .fillBlogTitle(Cypress.env('blogTitle'))
+        .fillName(Cypress.env('fullName'))
         .fillEmail(Cypress.env('username'))
         .fillPassword(Cypress.env('password'))
         .nextStep()

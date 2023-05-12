@@ -1,5 +1,4 @@
 import { faker } from '@faker-js/faker'
-import Navigation from "../pages/Navigation"
 import PageFactory from '../pages/PageFactory';
 import PageBase from '../pages/PageBase';
 
@@ -21,7 +20,9 @@ describe('Create post tests', () => {
   })
 
   it('ESC01 - Create a draft post with only the title', () => {
-    const nav = new Navigation()
+    faker.seed(1001);
+
+    const nav = pageFactory.navigation()
 
     // Given that I am a authenticated user visiting Ghost
     cy.authenticate(pageFactory)
@@ -45,7 +46,9 @@ describe('Create post tests', () => {
   })
 
   it('ESC02 - Create a draft post with title and description', () => {
-    const nav = new Navigation()
+    faker.seed(1002);
+
+    const nav = pageFactory.navigation()
 
     // Given that I am a authenticated user visiting Ghost
     cy.authenticate(pageFactory)
@@ -69,7 +72,9 @@ describe('Create post tests', () => {
   })
 
   it('ESC03 - Create and publish a post with title and description', () => {
-    const nav = new Navigation()
+    faker.seed(1003);
+
+    const nav = pageFactory.navigation()
 
     // Given that I am a authenticated user visiting Ghost
     cy.authenticate(pageFactory)
@@ -95,7 +100,9 @@ describe('Create post tests', () => {
   })
 
   it('ESC04 - Create and publish a post with a slug', () => {
-    const nav = new Navigation()
+    faker.seed(1004);
+
+    const nav = pageFactory.navigation()
 
     // Given that I am a authenticated user visiting Ghost
     cy.authenticate(pageFactory)
@@ -134,7 +141,9 @@ describe('Create post tests', () => {
   })
 
   it('ESC05 - Create a draft post with a tag', () => {
-    const nav = new Navigation()
+    faker.seed(1005);
+
+    const nav = pageFactory.navigation()
 
     // Given that I am a authenticated user visiting Ghost
     cy.authenticate(pageFactory)
@@ -172,7 +181,9 @@ describe('Create post tests', () => {
   })
 
   it('ESC06 - Create a post scheduled for later', () => {
-    const nav = new Navigation()
+    faker.seed(1006);
+
+    const nav = pageFactory.navigation()
 
     // Given that I am a authenticated user visiting Ghost
     cy.authenticate(pageFactory)

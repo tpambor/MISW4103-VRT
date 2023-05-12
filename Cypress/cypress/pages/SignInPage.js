@@ -25,8 +25,7 @@ class SignInPage extends PageBase {
     cy.get('button[type="submit"]').click();
     this.screenshot('submit');
 
-    // Make sure that we have successfully logged in
-    cy.get('.gh-nav-menu-details-blog').should('exist');
+    cy.get('nav li a').contains('Posts').should('exist');
     cy.wait(1000)
     this.screenshot('success');
   }

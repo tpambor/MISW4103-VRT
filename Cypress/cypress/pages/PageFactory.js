@@ -1,5 +1,5 @@
 import { CreateSiteStepOneV3, CreateSiteStepOneV4 } from "./CreateSitePage";
-import Navigation, { NavigationV4 } from "./Navigation";
+import { NavigationV3, NavigationV4 } from "./Navigation";
 import SignInPage from "./SignInPage";
 
 class PageFactory {
@@ -22,7 +22,7 @@ class PageFactory {
     
     navigation() {
         if (this.ghostVersion.startsWith('Ghost 3'))
-            return new Navigation();
+            return new NavigationV3();
         else if (this.ghostVersion.startsWith('Ghost 4'))
             return new NavigationV4();
         else

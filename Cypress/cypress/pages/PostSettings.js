@@ -1,6 +1,6 @@
 import PageBase from "./PageBase";
 
-class PostSettings extends PageBase {
+export class PostSettingsV3 extends PageBase {
   NAME = "PostSettings";
 
   fillSlug(value) {
@@ -31,4 +31,12 @@ class PostSettings extends PageBase {
   }
 }
     
-export default PostSettings;
+export class PostSettingsV4 extends PostSettingsV3 {
+  close() {
+    cy.get('button.settings-menu-toggle').click();
+    
+    cy.wait(1000);
+
+    this.screenshot('close');
+  }
+}

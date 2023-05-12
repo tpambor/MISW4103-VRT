@@ -1,7 +1,8 @@
 Feature: Crear tag
 
 @user1 @web
-Scenario: Discard a new tag
+# Discard a new tag (leave the page without save)
+Scenario: Tag - Discard
   Given I navigate to page "<BASE_URL>"
   And I wait for 2 seconds
   And I sign in with "<EMAIL>" and "<PASSWORD>"

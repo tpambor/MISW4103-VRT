@@ -1,7 +1,8 @@
 Feature: Crear Posts
 
 @user1 @web
-Scenario: Create a draft post with only the title
+# Create a draft post with only a title
+Scenario: Post - Draft with title
   Given I navigate to page "<BASE_URL>"
   And I wait for 2 seconds
   And I sign in with "<EMAIL>" and "<PASSWORD>"

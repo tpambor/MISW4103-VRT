@@ -1,7 +1,8 @@
 Feature: Edit profile
 
   @user1 @web
-  Scenario: Start Session in ghost, go to section staff facebook url save.
+  #Start Session in ghost, go to section staff facebook url save.
+  Scenario: Profile - Edit facebook
     Given I navigate to page "<BASE_URL>"
     And I wait for 2 seconds
     And I sign in with "<EMAIL>" and "<PASSWORD>"

@@ -11,6 +11,7 @@ Cypress.Commands.add('authenticate', (pageFactory) => {
   cy.hash().should('be.oneOf', [signIn.hash, createSite.hash])
   cy.hash().then((hash) => {
     if(hash === createSite.hash) {
+      createSite.screenshot('open');
       createSite
         .nextStep()
         .fillBlogTitle(Cypress.env('blogTitle'))

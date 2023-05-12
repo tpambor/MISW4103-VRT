@@ -47,3 +47,5 @@ Equipo #3
 ## Ventajas y desventajas 
 
 [Ventajas y desventajas Cypress y Kraken](https://github.com/tpambor/MISW4103-E2E/wiki/Comparación-entre-Cypress-y-Kraken)
+
+[Ventajas y desventajas Resemble JS y BackStop JS](https://github.com/tpambor/MISW4103-VRT/wiki/Comparaci%C3%B3n-entre-Resemble-JS-y-BackStop-JS)

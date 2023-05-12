@@ -32,19 +32,19 @@ describe('Create tag tests', () => {
       // And I create a new tag
       .createNewTag();
 
+    const tagName = faker.lorem.words(2);
+
     createTag
       // And I fill in the name
-      .fillName(faker.lorem.words(2))
+      .fillName(tagName)
       // And I save
       .save()
       // Then it is saved
       .should('be.true')
 
-    createTag.getSlug().invoke('val').then((slug) => {
-      // And I see the tag in the list of tags
-      nav.goToTags()
-        .getSlugs().contains(slug)
-    })
+    // And I see the tag in the list of tags
+    nav.goToTags()
+      .getTagNames().contains(tagName)
   })
 
   it('ESC08 - Create a tag without a name', () => {
@@ -91,9 +91,11 @@ describe('Create tag tests', () => {
       // And I create a new tag
       .createNewTag();
 
+    const tagName = faker.lorem.words(2);
+
     createTag
       // And I fill in the name
-      .fillName(faker.lorem.words(2))
+      .fillName(tagName)
       // And I fill in the color
       .fillColor(faker.color.rgb({ prefix: '' }))
       // And I save
@@ -101,11 +103,9 @@ describe('Create tag tests', () => {
       // Then it is saved
       .should('be.true')
 
-    createTag.getSlug().invoke('val').then((slug) => {
-      // And I see the tag in the list of tags
-      nav.goToTags()
-        .getSlugs().contains(slug)
-    })
+    // And I see the tag in the list of tags
+    nav.goToTags()
+      .getTagNames().contains(tagName)
   })
 
   it('ESC10 - Create a tag with a name and a invalid color', () => {
@@ -134,7 +134,7 @@ describe('Create tag tests', () => {
         .should('be.false')
 
       // And I see an error message indicating that the color should be in hex format
-      createTag.getErrorMessage().should('contain', 'The color should be in valid hex format')
+      createTag.getErrorMessage().should('contain', 'should be in valid hex format')
 
       // And in the list of tags I see the same number of tags as before
       cy.visit('/ghost/')
@@ -156,9 +156,11 @@ describe('Create tag tests', () => {
       // And I create a new tag
       .createNewTag();
 
+    const tagName = faker.lorem.words(2);
+
     createTag
       // And I fill in the name
-      .fillName(faker.lorem.words(2))
+      .fillName(tagName)
       // And I fill in the description
       .fillDescription(faker.lorem.lines(1))
       // And I save
@@ -166,11 +168,9 @@ describe('Create tag tests', () => {
       // Then it is saved
       .should('be.true')
 
-    createTag.getSlug().invoke('val').then((slug) => {
-      // And I see the tag in the list of tags
-      nav.goToTags()
-        .getSlugs().contains(slug)
-    })
+    // And I see the tag in the list of tags
+    nav.goToTags()
+      .getTagNames().contains(tagName)
   })
 
   it('ESC12 - Create a tag with a name and a very long description', () => {

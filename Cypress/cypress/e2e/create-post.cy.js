@@ -148,11 +148,20 @@ describe('Create post tests', () => {
     // Given that I am a authenticated user visiting Ghost
     cy.authenticate(pageFactory)
 
-    // And that I have a tag "Getting Started"
-    nav.goToTags()
-      .getTagNames().contains('Getting Started')
+    // When I navigate to the tags page
+    const createTag = nav.goToTags()
+      // And I create a new tag
+      .createNewTag();
 
-    // When I navigate to the posts page
+    const tagName = faker.lorem.words(2);
+
+    createTag
+      // And I fill in the name
+      .fillName(tagName)
+      // And I save
+      .save()
+
+    // And I navigate to the posts page
     const createPost = nav.goToPosts()
       // And I create a new post
       .createNewPost();
@@ -164,7 +173,7 @@ describe('Create post tests', () => {
       .fillTitle(postTitle)
       // And I open the settings of the post
       .openSettings()
-      .selectTag('Getting Started')
+      .selectTag(tagName)
       // And I close the settings
       .close()
 
@@ -177,7 +186,7 @@ describe('Create post tests', () => {
     // Then I see the post in the list of draft posts
     postList.filterDraftPosts().getPostNames().contains(postTitle)
     // And I see the post in the list of posts with the tag "Getting Started"
-    postList.filterByTag('Getting Started').getPostNames().contains(postTitle)
+    postList.filterByTag(tagName).getPostNames().contains(postTitle)
   })
 
   it('ESC06 - Create a post scheduled for later', () => {

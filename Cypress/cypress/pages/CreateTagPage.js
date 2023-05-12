@@ -11,7 +11,7 @@ class CreateTagPage extends PageBase {
   }
 
   fillColor(value) {
-    cy.get('input[name="accent-color"]').type(value);
+    cy.get('input[name="accent-color"][type="text"]').type(value);
     cy.get('label[for="accent-color"]').click();
     this.screenshot('fillColor');
 
@@ -42,10 +42,6 @@ class CreateTagPage extends PageBase {
 
   getErrorMessage() {
     return cy.get('.error p.response');
-  }
-
-  getSlug() {
-    return cy.get('input[name="slug"]');
   }
 }
 

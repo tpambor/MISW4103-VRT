@@ -8,6 +8,7 @@ export class NavigationV3 extends PageBase {
   NAME = "Navigation";
 
   goToTags() {
+    cy.wait(2000);
     cy.get('nav li a').contains('Tags').click();
     cy.get('h3.gh-tag-list-name').should('exist');
 
@@ -17,6 +18,7 @@ export class NavigationV3 extends PageBase {
   }
 
   goToPosts() {
+    cy.wait(2000);
     cy.get('nav li a').contains('Posts').click();
     cy.get('h3.gh-content-entry-title').should('exist');
 
@@ -26,6 +28,7 @@ export class NavigationV3 extends PageBase {
   }
 
   goToPages() {
+    cy.wait(2000);
     cy.get('nav li a').contains('Pages').click();
 
     cy.wait(2000);
@@ -35,6 +38,7 @@ export class NavigationV3 extends PageBase {
   }
 
   goToStaff() {
+    cy.wait(2000);
     cy.get('nav li a').contains('Staff').click();
 
     return new StaffListPage();
@@ -43,6 +47,7 @@ export class NavigationV3 extends PageBase {
 
 export class NavigationV4 extends NavigationV3 {
   goToPosts() {
+    cy.wait(2000);
     cy.get('nav li a').contains('Posts').click();
     cy.get('h3.gh-content-entry-title').should('exist');
 

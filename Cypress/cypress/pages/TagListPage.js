@@ -19,10 +19,6 @@ class TagListPage extends PageBase {
   getTagNames() {
     return cy.get('h3.gh-tag-list-name');
   }
-
-  getSlugs() {
-    return cy.get('.gh-tag-list-slug span');
-  }
 }
     
 export default TagListPage;

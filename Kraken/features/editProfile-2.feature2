@@ -1,7 +1,8 @@
 Feature: Editprofile-2
 
   @user1 @web
-  Scenario: Start Session in ghost, go to section profile, edit full name save.
+  # Start Session in ghost, go to section profile, edit full name save.
+  Scenario: Profile - Edit full name
     Given I navigate to page "<BASE_URL>"
     And I wait for 2 seconds
     And I sign in with "<EMAIL>" and "<PASSWORD>"

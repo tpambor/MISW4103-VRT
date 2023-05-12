@@ -1,7 +1,8 @@
 Feature: Crear tag
 
 @user1 @web
-Scenario: Create a tag with a name and a invalid color
+# Create a tag with a name and a invalid color
+Scenario: Tag - Invalid color
   Given I navigate to page "<BASE_URL>"
   And I wait for 2 seconds
   And I sign in with "<EMAIL>" and "<PASSWORD>"

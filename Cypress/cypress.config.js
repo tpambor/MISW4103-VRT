@@ -16,9 +16,9 @@ module.exports = defineConfig({
       on('before:browser:launch', (browser, launchOptions) => {
         if (browser.name === 'chrome' && browser.isHeadless) {
           launchOptions.args.push('--window-size=1920,1080');
-
-          return launchOptions;
         }
+
+        return launchOptions;
       })
     },
   },

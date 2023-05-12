@@ -23,12 +23,12 @@ jobs:
       - uses: actions/upload-artifact@v3
         if: always()
         with:
-          name: cypress-screenshots
+          name: cypress-screenshots-ghost3
           path: Cypress/cypress/screenshots
       - uses: actions/upload-artifact@v3
         if: always()
         with:
-          name: cypress-videos
+          name: cypress-videos-ghost3
           path: Cypress/cypress/videos
           
   cypress-ghost4:
@@ -46,10 +46,10 @@ jobs:
       - uses: actions/upload-artifact@v3
         if: always()
         with:
-          name: cypress-screenshots
+          name: cypress-screenshots-ghost4
           path: Cypress/cypress/screenshots
       - uses: actions/upload-artifact@v3
         if: always()
         with:
-          name: cypress-videos
+          name: cypress-videos-ghost4
           path: Cypress/cypress/videos

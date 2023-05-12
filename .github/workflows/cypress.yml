@@ -19,6 +19,7 @@ jobs:
           start: docker run --rm -t -p 2368:2368 ghost:3.41.1
           working-directory: Cypress
           wait-on: 'http://localhost:2368'
+          browser: chrome
       - run: touch Cypress/cypress/screenshots && touch Cypress/cypress/videos
       - uses: actions/upload-artifact@v3
         if: always()
@@ -42,6 +43,7 @@ jobs:
           start: docker run --rm -t -p 2368:2368 ghost:4.44.0
           working-directory: Cypress
           wait-on: 'http://localhost:2368'
+          browser: chrome
       - run: touch Cypress/cypress/screenshots && touch Cypress/cypress/videos
       - uses: actions/upload-artifact@v3
         if: always()

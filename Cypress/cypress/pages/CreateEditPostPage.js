@@ -39,6 +39,7 @@ export class CreateEditPostPageV3 extends PageBase {
     this.screenshot('publishMenu');
     cy.get('.gh-publishmenu-radio-label').contains('Set it live now').click();
     this.screenshot('publishSelectLive');
+    this.screenshot('publishConfirm_dummy');
 
     cy.get('.gh-publishmenu-button').click();
 
@@ -56,6 +57,7 @@ export class CreateEditPostPageV3 extends PageBase {
     this.screenshot('publishMenu');
     cy.get('.gh-publishmenu-radio-label').contains('Schedule it for later').click();
     this.screenshot('publishSelectLater')
+    this.screenshot('publishConfirm_dummy');
 
     cy.get('.gh-publishmenu-button').click();
     cy.get('.gh-notification-title').contains('Scheduled');

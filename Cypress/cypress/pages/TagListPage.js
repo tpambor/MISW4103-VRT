@@ -1,8 +1,13 @@
 import CreateTagPage from "./CreateTagPage";
+import PageBase from "./PageBase";
 
-class TagListPage {
+class TagListPage extends PageBase {
+  NAME = "TagList"
+
   createNewTag() {
     cy.contains('a', 'New tag').click()
+
+    this.screenshot('createNewTag');
 
     return new CreateTagPage()
   }

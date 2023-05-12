@@ -1,4 +1,5 @@
 import { CreateSiteStepOneV3, CreateSiteStepOneV4 } from "./CreateSitePage";
+import Modal from "./Modal";
 import { NavigationV3, NavigationV4 } from "./Navigation";
 import SignInPage from "./SignInPage";
 
@@ -27,6 +28,10 @@ class PageFactory {
             return new NavigationV4();
         else
             throw "Unsupported version";
+    }
+
+    modal() {
+        return new Modal();
     }
 }
     

@@ -28,6 +28,9 @@ export class NavigationV3 extends PageBase {
   goToPages() {
     cy.get('nav li a').contains('Pages').click();
 
+    cy.wait(2000);
+    this.screenshot('goToPages');
+
     return new PageListPage();
   }
 

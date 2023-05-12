@@ -1,6 +1,4 @@
 import { faker } from '@faker-js/faker'
-import Navigation from "../pages/Navigation"
-import Modal from '../pages/Modal'
 import PageFactory from '../pages/PageFactory';
 import PageBase from '../pages/PageBase';
 
@@ -21,8 +19,10 @@ describe('Create tag tests', () => {
     PageBase.resetStepCounter();
   })
 
-  it('ESC01 - Create a tag with a name', () => {
-    const nav = new Navigation()
+  it('ESC07 - Create a tag with a name', () => {
+    faker.seed(1007);
+
+    const nav = pageFactory.navigation()
 
     // Given that I am a authenticated user visiting Ghost
     cy.authenticate(pageFactory)
@@ -47,8 +47,10 @@ describe('Create tag tests', () => {
     })
   })
 
-  it('ESC02 - Create a tag without a name', () => {
-    const nav = new Navigation()
+  it('ESC08 - Create a tag without a name', () => {
+    faker.seed(1008);
+
+    const nav = pageFactory.navigation()
 
     // Given that I am a authenticated user visiting Ghost
     cy.authenticate(pageFactory)
@@ -76,8 +78,10 @@ describe('Create tag tests', () => {
     })
   })
 
-  it('ESC03 - Create a tag with a name and a color', () => {
-    const nav = new Navigation()
+  it('ESC09 - Create a tag with a name and a color', () => {
+    faker.seed(1009);
+
+    const nav = pageFactory.navigation()
 
     // Given that I am a authenticated user visiting Ghost
     cy.authenticate(pageFactory)
@@ -104,8 +108,10 @@ describe('Create tag tests', () => {
     })
   })
 
-  it('ESC04 - Create a tag with a name and a invalid color', () => {
-    const nav = new Navigation()
+  it('ESC10 - Create a tag with a name and a invalid color', () => {
+    faker.seed(1010);
+
+    const nav = pageFactory.navigation()
 
     // Given that I am a authenticated user visiting Ghost
     cy.authenticate(pageFactory)
@@ -137,8 +143,10 @@ describe('Create tag tests', () => {
     })
   })
 
-  it('ESC05 - Create a tag with a name and a short description', () => {
-    const nav = new Navigation()
+  it('ESC11 - Create a tag with a name and a short description', () => {
+    faker.seed(1011);
+
+    const nav = pageFactory.navigation()
 
     // Given that I am a authenticated user visiting Ghost
     cy.authenticate(pageFactory)
@@ -165,8 +173,10 @@ describe('Create tag tests', () => {
     })
   })
 
-  it('ESC06 - Create a tag with a name and a very long description', () => {
-    const nav = new Navigation()
+  it('ESC12 - Create a tag with a name and a very long description', () => {
+    faker.seed(1012);
+
+    const nav = pageFactory.navigation()
 
     // Given that I am a authenticated user visiting Ghost
     cy.authenticate(pageFactory)
@@ -198,8 +208,10 @@ describe('Create tag tests', () => {
     })
   })
 
-  it('ESC07 - Discard a new tag', () => {
-    const nav = new Navigation()
+  it('ESC13 - Discard a new tag', () => {
+    faker.seed(1013);
+
+    const nav = pageFactory.navigation()
 
     // Given that I am a authenticated user visiting Ghost
     cy.authenticate(pageFactory)
@@ -219,7 +231,7 @@ describe('Create tag tests', () => {
       nav.goToPages()
 
       // Then I see a modal where I can confirm that I don't want to save my changes
-      const modal = new Modal;
+      const modal = pageFactory.modal();
       modal.getMessage().contains("It looks like you didn't save the changes you made.")
       modal.leave()
 

@@ -12,6 +12,7 @@ class CreateTagPage extends PageBase {
 
   fillColor(value) {
     cy.get('input[name="accent-color"]').type(value);
+    cy.get('label[for="accent-color"]').click();
     this.screenshot('fillColor');
 
     return this;
@@ -27,13 +28,16 @@ class CreateTagPage extends PageBase {
   save() {
     let button = cy.contains('button', 'Save');
     button.click();
-    this.screenshot('save');
+
+    let result = "";
 
     return button.invoke('text')
       .should(($text) => {
+        result = $text;
         expect($text.trim()).to.be.oneOf(['Retry', 'Saved'])
       })
-      .then(($text) => $text.trim() === 'Saved');
+      .then(() => this.screenshot('save'))
+      .then(() => result.trim() === 'Saved')
   }
 
   getErrorMessage() {

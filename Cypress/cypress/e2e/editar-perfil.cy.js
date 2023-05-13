@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker'
-import Navigation from "../pages/Navigation"
 import PageFactory from '../pages/PageFactory';
+import PageBase from '../pages/PageBase';
 
 describe('Editar Perfil tests', () => {
   let pageFactory;
@@ -15,8 +15,14 @@ describe('Editar Perfil tests', () => {
     }).should('contain', 'Ghost')
   })
 
-  it('Edit Profile with full name', () => {
-    const nav = new Navigation()
+  beforeEach(() => {
+    PageBase.resetStepCounter();
+  })
+
+  it('ESC14 - Edit Profile with full name', () => {
+    faker.seed(1014);
+
+    const nav = pageFactory.navigation()
 
     // Given that I am a authenticated user visiting Ghost
     cy.authenticate(pageFactory)
@@ -38,8 +44,10 @@ describe('Editar Perfil tests', () => {
     })
   })
 
-  it('Edit Profile with Facebook Url', () => {
-    const nav = new Navigation()
+  it('ESC15 - Edit Profile with Facebook Url', () => {
+    faker.seed(1015);
+
+    const nav = pageFactory.navigation()
 
     // Given that I am a authenticated user visiting Ghost
     cy.authenticate(pageFactory)
@@ -61,8 +69,10 @@ describe('Editar Perfil tests', () => {
     })  
   })
 
-  it('Edit Profile with Location', () => {
-    const nav = new Navigation()
+  it('ESC16 - Edit Profile with Location', () => {
+    faker.seed(1016);
+
+    const nav = pageFactory.navigation()
 
     // Given that I am a authenticated user visiting Ghost
     cy.authenticate(pageFactory)
@@ -84,8 +94,10 @@ describe('Editar Perfil tests', () => {
     })
   })
 
-  it('Edit Profile with Website', () => {
-    const nav = new Navigation()
+  it('ESC17 - Edit Profile with Website', () => {
+    faker.seed(1017);
+
+    const nav = pageFactory.navigation()
 
     // Given that I am a authenticated user visiting Ghost
     cy.authenticate(pageFactory)
@@ -107,8 +119,10 @@ describe('Editar Perfil tests', () => {
     })
   })
   
-  it('Edit Profile with Twitter Url', () => {
-    const nav = new Navigation()
+  it('ESC18 - Edit Profile with Twitter Url', () => {
+    faker.seed(1018);
+
+    const nav = pageFactory.navigation()
 
     // Given that I am a authenticated user visiting Ghost
     cy.authenticate(pageFactory)
@@ -130,8 +144,10 @@ describe('Editar Perfil tests', () => {
     })
   })
 
-  it('Edit Profile with a short biography', () => {
-    const nav = new Navigation()
+  it('ESC19 - Edit Profile with a short biography', () => {
+    faker.seed(1019);
+
+    const nav = pageFactory.navigation()
 
     // Given that I am a authenticated user visiting Ghost
     cy.authenticate(pageFactory)
@@ -153,8 +169,10 @@ describe('Editar Perfil tests', () => {
     })
   })
 
-  it('Edit Profile with a very long biography', () => {
-    const nav = new Navigation()
+  it('ESC20 - Edit Profile with a very long biography', () => {
+    faker.seed(1020);
+
+    const nav = pageFactory.navigation()
 
     // Given that I am a authenticated user visiting Ghost
     cy.authenticate(pageFactory)
@@ -176,8 +194,10 @@ describe('Editar Perfil tests', () => {
     })
   })
 
-  it('Save a Profile without making changes', () => {
-    const nav = new Navigation()
+  it('ESC21 - Save a Profile without making changes', () => {
+    faker.seed(1021);
+
+    const nav = pageFactory.navigation()
 
     // Given that I am a authenticated user visiting Ghost
     cy.authenticate(pageFactory)

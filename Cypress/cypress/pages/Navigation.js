@@ -41,6 +41,9 @@ export class NavigationV3 extends PageBase {
     cy.wait(2000);
     cy.get('nav li a').contains('Staff').click();
 
+    cy.wait(2000);
+    this.screenshot('goToStaff');
+
     return new StaffListPage();
   }
 }

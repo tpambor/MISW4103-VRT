@@ -11,6 +11,10 @@
   "license": "ISC",
   "dependencies": {
     "canvas": "^2.11.2",
+    "ejs": "^3.1.9"
+  },
+  "devDependencies": {
+    "html-reporter": "^9.9.0",
     "resemblejs": "^4.1.0"
   }
 }

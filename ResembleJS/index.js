@@ -1,6 +1,7 @@
 import compareImages from "resemblejs/compareImages.js";
 import * as fs from 'fs/promises';
 import path from "path";
+import ejs from "ejs";
 
 async function discoverScenarios(dirs, b_base) {
   let items = [];
@@ -20,10 +21,11 @@ async function discoverScenarios(dirs, b_base) {
             const step_name = image.endsWith('_dummy.png') ? image.slice(0, -10) :  image.slice(0, -4);
 
             let image_b_path = path.join(b_base, ...new_dirs.slice(1), step_name + '.png');
-            let check_b = await fs.access(image_b_path, fs.constants.F_OK).then(() => true).catch(() => false);
+            console.log(image_b_path);
+            let check_b = await fs.access(image_b_path).then(() => true).catch(() => false);
             if(!check_b) {
               image_b_path = path.join(b_base, ...new_dirs.slice(1), step_name + '_dummy.png');
-              check_b = await fs.access(image_b_path, fs.constants.F_OK).then(() => true).catch(() => false);
+              check_b = await fs.access(image_b_path).then(() => true).catch(() => false);
             }
 
             if(!check_b) {
@@ -59,6 +61,12 @@ async function discoverScenarios(dirs, b_base) {
   return items;
 }
 
+const reportData = {
+  date: new Date().toLocaleString(),
+  scenarios: [],
+  numFailed: 0,
+};
+
 async function main() {
   console.log('Hola a VRT con ResembleJS');
   console.log('');
@@ -67,9 +75,11 @@ async function main() {
 
   const scenarios = await discoverScenarios(['ghost3'], 'ghost4');
   const num_scenarios = scenarios.length;
-
+  
   let num_steps = 0;
   const groups = {}
+  let datetime = new Date().toISOString().replace(/:/g, ".");
+
   for (const esc of scenarios) {
     if (groups[esc.group] === undefined) {
       groups[esc.group] = [esc];
@@ -78,15 +88,23 @@ async function main() {
       groups[esc.group].push(esc);
     }
 
-    num_steps += esc.steps.length;
+   
   }
+  
   const num_groups = Object.keys(groups).length;
 
   console.log('Encontré ' + num_scenarios + ' escenarios en ' +  num_groups + ' grupos con ' + num_steps + ' pasos');
   console.log('')
 
+  const reportData = {
+    date: new Date().toLocaleString(),
+    scenarios: [],
+    numFailed: 0,
+  };
+
   for (const [key, value] of Object.entries(groups)) {
     console.log('Grupo ' + key);
+
     for (const esc of value) {
       console.log('  ' + esc.scenario);
       await fs.mkdir(path.join('results', key, esc.scenario), { recursive: true })
@@ -99,10 +117,82 @@ async function main() {
           step.image_b,
           config.resembleJS
         );
+
+       
+
         await fs.writeFile(path.join('results', key, esc.scenario, step.name + '.png'), data.getBuffer());
       }
     }
   }
-}
+  
+  
+  for (const [key, value] of Object.entries(groups)) {
+    for (const esc of value) {
+      const scenario = {
+        name: esc.scenario,
+        status: 'PASSED',
+        steps: [],
+        group: key
+      };
+     
+      for (const step of esc.steps) {
+       
+        const data = await compareImages(
+          step.image_a,
+          step.image_b,
+          config.resembleJS
+        );
+  
+        const resultPath = path.join('results', key, esc.scenario, step.name + '.png');
+        await fs.writeFile(resultPath, data.getBuffer());
+  
+        const diff = data.getBuffer().toString('base64');
+        
+        const misMatchPercentage = data.misMatchPercentage;
+        const passed = misMatchPercentage <= config.resembleJS.errorColor;
 
+       
+        if (!passed) {
+          scenario.status = 'FAILED';
+          reportData.numFailed++;
+        }
+  
+        const stepData = {
+          name: step.name,
+          passed,
+          misMatchPercentage,
+          diff,
+          resultPath: resultPath,
+          before: step.image_a, 
+          after:step.image_b,
+          rawMisMatchPercentage: data.rawMisMatchPercentage,
+          data: JSON.stringify(
+            {
+              isSameDimensions: data.isSameDimensions,
+              dimensionDifference: data.dimensionDifference,
+              rawMisMatchPercentage: data.rawMisMatchPercentage,
+              misMatchPercentage: data.misMatchPercentage,
+              diffBounds: data.diffBounds,
+              analysisTime: data.analysisTime,
+            },
+            null,
+            2
+          ),
+        };
+        
+        scenario.steps.push(stepData);
+      }
+  
+      reportData.scenarios.push(scenario);
+    }
+  }
+  
+  const reportPath = path.join('results', 'report.html');
+  const reportTemplate = await fs.readFile('./report-template.ejs', 'utf8');
+  const html = ejs.render(reportTemplate, { reportData });
+  await fs.writeFile(reportPath, html);
+  console.log('Reporte generado en ' + reportPath);
+  
+}
 await main();
+

@@ -66,7 +66,7 @@ Equipo #3
 6. En la carpeta ResembleJS crear una carpeta llamada "ghost4". 
 7. Copiar en esta carpeta los screenshots resultantes de la ejecución con Ghost4 (que están dentro de la carpeta screenshots). O también se puede decargar y descomprimir en esta carpeta el archivo "cypress-screenshots-ghost4" que se encuentra en [Resultados ejecución pruebas](https://github.com/tpambor/MISW4103-VRT/actions/runs/4965956471).
 8. Desde la carpeta ResembleJS ejecutar el comando  `node index.js`
-9. ir a la carpeta /results/report.html
+9. ir a la carpeta /ResembleJS/results/report.html
 
 ## Ventajas y desventajas 
 

@@ -89,15 +89,17 @@ async function main() {
     console.log('Grupo ' + key);
     for (const esc of value) {
       console.log('  ' + esc.scenario);
+      await fs.mkdir(path.join('results', key, esc.scenario), { recursive: true })
+
       for (const step of esc.steps) {
         console.log('    ' + step.name);
 
-        /*var data = await compareImages(
-          'ghost3/create-tag.cy.js/create-tag/esc07/00_SignIn_open.png',
-          'ghost4/create-tag.cy.js/create-tag/esc07/00_SignIn_open.png',
+        var data = await compareImages(
+          step.image_a,
+          step.image_b,
           config.resembleJS
         );
-        await fs.writeFile("./diff.png", data.getBuffer());*/
+        await fs.writeFile(path.join('results', key, esc.scenario, step.name + '.png'), data.getBuffer());
       }
     }
   }

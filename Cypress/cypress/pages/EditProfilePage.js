@@ -37,7 +37,7 @@ class EditProfilePage extends PageBase {
 
   fillWebsite(value) {
     cy.get('input#user-website').clear({force: true}).type(value, {scrollBehavior: 'center'});
-    this.screenshot('fillFullName');
+    this.screenshot('fillWebsite');
 
     return this;
   }

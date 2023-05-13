@@ -1,6 +1,6 @@
 import TagListPage from "./TagListPage";
 import PageListPage from "./PageListPage";
-import StaffListPage from "./StaffListPage";
+import { StaffListPageV3, StaffListPageV4 } from "./StaffListPage";
 import { PostListPageV3, PostListPageV4 } from "./PostListPage";
 import PageBase from "./PageBase";
 
@@ -39,12 +39,13 @@ export class NavigationV3 extends PageBase {
 
   goToStaff() {
     cy.wait(2000);
+    this.screenshot('showSettings_dummy');
     cy.get('nav li a').contains('Staff').click();
 
     cy.wait(2000);
     this.screenshot('goToStaff');
 
-    return new StaffListPage();
+    return new StaffListPageV3();
   }
 }
 
@@ -59,6 +60,20 @@ export class NavigationV4 extends NavigationV3 {
     return new PostListPageV4();
   }
   
+  goToStaff() {
+    cy.get('.gh-nav-bottom-tabicon').click();
+    cy.wait(1000);
+    this.screenshot('showSettings');
+
+    cy.get('.gh-setting-group').contains('Staff').click();
+
+    cy.wait(2000);
+    cy.get('.gh-member-actions-menu').invoke('css', 'display', 'none'); // Animation breaks screenshot
+    this.screenshot('goToStaff');
+
+    return new StaffListPageV4();
+  }
+
   getSitename() {
     return cy.get('.gh-nav-menu-details-sitetitle');
   }

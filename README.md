@@ -57,10 +57,15 @@ Equipo #3
 10. Seleccionar `Chrome`/`Chromium` y haz clic en `Start E2E Testing in Chromium`
 11. Seleccionar el archivo que se desea ejecutar (create-post, create-tag o editar-perfil). 
 
-## Reporte HTML 
- 
-FALTA
- 
+## Instrucciones para generar el reporte HTML 
+1. Clonar este repositorio
+2. Ir a la carpeta ResembleJS
+3. Instalar las dependencias con `npm install resemblejs`
+4. En la carpeta ResembleJS crear una carpeta llamada "ghost3". 
+5. Copiar en esta carpeta los screenshots resultantes de la ejecución con Ghost3 (que están dentro de la carpeta screenshots). O también se puede decargar y descomprimir en esta carpeta el archivo "cypress-screenshots-ghost3" que se encuentra en [Resultados ejecución pruebas](https://github.com/tpambor/MISW4103-VRT/actions/runs/4965956471). 
+6. En la carpeta ResembleJS crear una carpeta llamada "ghost4". 
+7. Copiar en esta carpeta los screenshots resultantes de la ejecución con Ghost4 (que están dentro de la carpeta screenshots). O también se puede decargar y descomprimir en esta carpeta el archivo "cypress-screenshots-ghost4" que se encuentra en [Resultados ejecución pruebas](https://github.com/tpambor/MISW4103-VRT/actions/runs/4965956471).
+8. Desde la carpeta ResembleJS ejecutar el comando  `node index.js`
 
 ## Ventajas y desventajas 
 

@@ -72,6 +72,35 @@ jobs:
         with:
           name: cypress-screenshots-ghost4
           path: ResembleJS/ghost4
-      - name: Display structure of downloaded files
-        run: ls -R
+      - name: Setup Node.js 16.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+      - name: Install Dependencies
+        run: npm ci
         working-directory: ResembleJS
+      - name: Generate report
+        run: node index.js
+        working-directory: ResembleJS
+      - uses: actions/upload-artifact@v3
+        with:
+          name: vrt-report
+          path: ResembleJS/results
+      - run: mv ResembleJS/results/report.html ResembleJS/results/index.html
+      - name: Upload GitHub Pages artifact
+        if: github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: ResembleJS/results
+
+  deploy:
+    needs: vrt
+    permissions:
+      pages: write
+      id-token: write
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2

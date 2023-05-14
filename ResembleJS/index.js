@@ -21,7 +21,6 @@ async function discoverScenarios(dirs, b_base) {
             const step_name = image.endsWith('_dummy.png') ? image.slice(0, -10) :  image.slice(0, -4);
 
             let image_b_path = path.join(b_base, ...new_dirs.slice(1), step_name + '.png');
-            console.log(image_b_path);
             let check_b = await fs.access(image_b_path).then(() => true).catch(() => false);
             if(!check_b) {
               image_b_path = path.join(b_base, ...new_dirs.slice(1), step_name + '_dummy.png');
@@ -101,33 +100,16 @@ async function main() {
     scenarios: [],
     numFailed: 0,
   };
-
+  
   for (const [key, value] of Object.entries(groups)) {
     console.log('Grupo ' + key);
-
     for (const esc of value) {
       console.log('  ' + esc.scenario);
-      await fs.mkdir(path.join('results', key, esc.scenario), { recursive: true })
 
-      for (const step of esc.steps) {
-        console.log('    ' + step.name);
+      await fs.mkdir(path.join('results', 'comp', key, esc.scenario), { recursive: true })
+      await fs.mkdir(path.join('results', 'before', key, esc.scenario), { recursive: true })
+      await fs.mkdir(path.join('results', 'after', key, esc.scenario), { recursive: true })
 
-        var data = await compareImages(
-          step.image_a,
-          step.image_b,
-          config.resembleJS
-        );
-
-       
-
-        await fs.writeFile(path.join('results', key, esc.scenario, step.name + '.png'), data.getBuffer());
-      }
-    }
-  }
-  
-  
-  for (const [key, value] of Object.entries(groups)) {
-    for (const esc of value) {
       const scenario = {
         name: esc.scenario,
         status: 'PASSED',
@@ -136,6 +118,7 @@ async function main() {
       };
      
       for (const step of esc.steps) {
+        console.log('    ' + step.name);
        
         const data = await compareImages(
           step.image_a,
@@ -143,11 +126,15 @@ async function main() {
           config.resembleJS
         );
   
-        const resultPath = path.join('results', key, esc.scenario, step.name + '.png');
-        await fs.writeFile(resultPath, data.getBuffer());
+        const resultPath = path.join('comp', key, esc.scenario, step.name + '.png');
+        await fs.writeFile(path.join('results', resultPath), data.getBuffer());
   
-        const diff = data.getBuffer().toString('base64');
-        
+        const image_a_target = path.join('before', key, esc.scenario, step.name + '.png');
+        await fs.copyFile(step.image_a, path.join('results', image_a_target));
+
+        const image_b_target = path.join('after', key, esc.scenario, step.name + '.png');
+        await fs.copyFile(step.image_b, path.join('results', image_b_target));
+
         const misMatchPercentage = data.misMatchPercentage;
         const passed = misMatchPercentage <= config.resembleJS.errorColor;
 
@@ -161,10 +148,9 @@ async function main() {
           name: step.name,
           passed,
           misMatchPercentage,
-          diff,
           resultPath: resultPath,
-          before: step.image_a, 
-          after:step.image_b,
+          before: image_a_target, 
+          after: image_b_target,
           rawMisMatchPercentage: data.rawMisMatchPercentage,
           data: JSON.stringify(
             {

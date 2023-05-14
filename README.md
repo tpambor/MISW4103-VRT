@@ -7,6 +7,10 @@ Equipo #3
 - Leidy Viviana Osorio Jimenez, l.osorioj@uniandes.edu.co​​
 - Tim Ulf Pambor, t.pambor@uniandes.edu.co​​
 
+## Video
+
+[`https://uniandes-my.sharepoint.com/:v:/g/personal/t_pambor_uniandes_edu_co/ETQU2aX7vAtGq-1JFp3L9BwBRxeqkTB4Xy1OBdjJVeB8UA?e=I2D4eq`](https://uniandes-my.sharepoint.com/:v:/g/personal/t_pambor_uniandes_edu_co/ETQU2aX7vAtGq-1JFp3L9BwBRxeqkTB4Xy1OBdjJVeB8UA?e=I2D4eq)
+
 ## Funcionalidades bajo pruebas
 
 [Funcionalidades bajo pruebas](https://github.com/tpambor/MISW4103-E2E/wiki/Funcionalidades-bajo-pruebas)

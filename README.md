@@ -74,7 +74,13 @@ Equipo #3
 
 [Ventajas y desventajas Resemble JS y BackStop JS](https://github.com/tpambor/MISW4103-VRT/wiki/Comparaci%C3%B3n-entre-Resemble-JS-y-BackStop-JS)
 
-
-
-
-
+## (Bono) Pruebas de regresión visual completamente automatizadas utilizando pipeline de Github Actions
+- Github actions workflow utilizado https://github.com/tpambor/MISW4103-VRT/blob/main/.github/workflows/cypress.yml
+- Evidencia de ejecución: https://github.com/tpambor/MISW4103-VRT/actions/runs/4970812573
+- Genera de manera automática
+  - Screenshots de 21 escenarios usando Cypress y Ghost 3.41.1
+  - Screenshots de 21 escenarios usando Cypress y Ghost 4.44.0
+  - Reporte en formato HTML de las pruebas de regresión visual
+  - Video de la ejecución de Cypress con Ghost 3.41.1
+  - Video de la ejecución de Cypress con Ghost 4.44.0
+- Gracias a Github Pages, los resultados están disponibles en https://tpambor.github.io/MISW4103-VRT/
